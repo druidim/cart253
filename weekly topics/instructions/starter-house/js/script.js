@@ -1,6 +1,6 @@
 /**
- * My House
- * Pippin Barr
+ * Starter House
+ * Laura Slabbert
  * 
  * Draws a house with shapes.
  * 
@@ -25,19 +25,7 @@ function draw() {
     // The sky
     background(150, 200, 250);
 
-    // A cloud
-    push();
-    noStroke();
-    // Note: using a single number for a colour will be greyscale
-    // (As if you used the same number for R, G, and B)
-    // So this is white:
-    fill(255);
-    ellipse(100, 100, 100, 100);
-    ellipse(180, 80, 100, 100);
-    ellipse(160, 120, 60, 60);
-    ellipse(190, 130, 60, 60);
-    ellipse(220, 120, 60, 60);
-    pop();
+    drawCloud();
 
     // The ground
     push();
@@ -85,5 +73,20 @@ function draw() {
     noStroke();
     fill(255, 215, 0);
     ellipse(340, 360, 10, 10);
+    pop();
+}
+
+function drawCloud() {
+    push();
+    noStroke();
+    // Note: using a single number for a colour will be greyscale
+    // (As if you used the same number for R, G, and B)
+    // So this is white:
+    fill(255);
+    ellipse(100, 100, 100, 100);
+    ellipse(180, 80, 100, 100);
+    ellipse(160, 120, 60, 60);
+    ellipse(190, 130, 60, 60);
+    ellipse(220, 120, 60, 60);
     pop();
 }
