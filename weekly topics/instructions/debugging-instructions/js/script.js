@@ -1,6 +1,6 @@
 /**
  * Debugging Instructions
- * Pippin Barr
+ * Laura Slabbert
  * 
  * Is meant to display a bug. But doesn't. Because it has bugs.
  * 
