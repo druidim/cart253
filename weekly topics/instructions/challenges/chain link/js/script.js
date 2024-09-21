@@ -1,18 +1,17 @@
 /**
- * Title of Project
- * Author Name
+ * Chain Link challenge
+ * Laura Slabbert
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * This program draws a chain link
  */
 
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * Draws the canvas
 */
 function setup() {
-
+    createCanvas(640, 640);
 }
 
 
@@ -21,4 +20,13 @@ function setup() {
 */
 function draw() {
 
+    //draws the background
+    background(197, 246, 111);
+
+    //draws the chains
+    push();
+    strokeWeight(25)
+    noFill();
+    ellipse(320, 320, 160, 290);
+    pop();
 }

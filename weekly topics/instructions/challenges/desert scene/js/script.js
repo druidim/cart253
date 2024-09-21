@@ -45,6 +45,6 @@ function draw() {
     push();
     noStroke();
     fill(228, 208, 10);
-    triangle(250, 400, 320, 280, 330, 420)
+    triangle(240, 400, 320, 280, 330, 420)
     pop();
 }
