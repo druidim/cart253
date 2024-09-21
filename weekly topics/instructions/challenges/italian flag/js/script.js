@@ -24,24 +24,24 @@ function draw() {
     background(100, 149, 237);
     pop();
 
-    //draws the leftmost rectangle
+    //draws the green rectangle
     push();
     fill(0, 140, 69);
     noStroke();
-    rect(100, 160, 160, 320);
+    rect(80, 160, 160, 320);
     pop();
 
-    //draws the middle rectangle
+    //draws the white rectangle
     push();
     fill(244, 249, 255);
     noStroke();
-    rect(260, 160, 160, 320);
+    rect(240, 160, 160, 320);
     pop();
 
-    //draws the leftmost rectangle
+    //draws the red rectangle
     push();
     fill(205, 33, 42);
     noStroke();
-    rect(420, 160, 160, 320);
+    rect(400, 160, 160, 320);
     pop();
 }
