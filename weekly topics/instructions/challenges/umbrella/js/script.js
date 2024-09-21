@@ -1,24 +1,25 @@
 /**
- * Title of Project
- * Author Name
+ * Umbrella Challenge
+ * Laura Slabbert
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * Draws an umbrella
  */
 
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * creates the canvas
 */
 function setup() {
-
+    createCanvas(640, 640)
 }
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * draws the umbrella
 */
 function draw() {
 
+    //draws the background
+    background(221, 218, 200)
 }
