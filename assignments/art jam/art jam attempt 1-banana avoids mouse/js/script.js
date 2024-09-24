@@ -6,12 +6,16 @@
  */
 
 "use strict";
+
+//let x = constrain(mouseX, 0, 640);
+//let y = constrain(mouseY, 0, 640);
+
 let banana = {
     red: 252,
     green: 244,
     blue: 3,
-    x: 320,
-    y: 320,
+    x: mouseX,
+    y: mouseY,
     w: 80,
     h: 80,
 }
@@ -35,6 +39,6 @@ function draw() {
     noFill();
     stroke(banana.red, banana.green, banana.blue)
     strokeWeight(20);
-    arc(mouseX, mouseY, 80, 30, 0, PI)
+    arc(banana.x, banana.y, 80, 30, 0, PI);
     pop();
 }
