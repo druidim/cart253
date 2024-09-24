@@ -14,8 +14,8 @@ let banana = {
     red: 252,
     green: 244,
     blue: 3,
-    x: mouseX,
-    y: mouseY,
+    x: 320,
+    y: 320,
     w: 80,
     h: 80,
 }
@@ -34,11 +34,20 @@ function draw() {
     //draws the background 
     background(204, 204, 255);
 
+
+    //changes the banana to green
+    banana.red -= 1;
+    banana.red = constrain(banana.red, 0, 204);
+    banana.green -= 1;
+    banana.green = constrain(banana.green, 0, 235);
+    banana.blue += 1;
+    banana.blue = constrain(banana.blue, 0, 143);
+
     //draws the banana
     push();
     noFill();
     stroke(banana.red, banana.green, banana.blue)
     strokeWeight(20);
-    arc(banana.x, banana.y, 80, 30, 0, PI);
+    arc(mouseX, mouseY, 80, 30, 0, PI);
     pop();
 }
