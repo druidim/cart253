@@ -1,5 +1,5 @@
 /**
- * Banana avoids mouse
+ * Banana avoids mouse/Banana Split
  * Laura Slabbert
  * 
  * A banana does not wish to be eaten and avoids the mouse
@@ -28,14 +28,14 @@ function setup() {
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * draws the elements of the program
 */
 function draw() {
     //draws the background 
     background(128, 143, 209);
 
 
-    //changes the banana to green
+    //changes the banana from yellow to green
     banana.red -= 0.25;
     banana.red = constrain(banana.red, 204, 255);
     banana.green += 0.25;
