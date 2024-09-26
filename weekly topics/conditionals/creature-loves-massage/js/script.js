@@ -68,6 +68,21 @@ function checkInput() {
         creature.fill = creature.fills.bored;
     }
 }
+function checkInput() {
+
+    const distance = dist(mouseX, mouseY, creature.x, creature.y);
+    const mouseOverlapsCreature = (distance < creature.size / 2);
+
+    const mouseIsMoving = (movedX !== 0 || movedY !== 0);
+
+    if (mouseOverlapsCreature && mouseIsMoving) {
+        creature.fill = creature.fills.happy;
+    }
+    else {
+        creature.fill = creature.fills.bored;
+    }
+}
+
 
 /**
  * Draws the creature
