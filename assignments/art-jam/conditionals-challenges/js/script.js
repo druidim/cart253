@@ -25,6 +25,10 @@ const user = {
  */
 function setup() {
     createCanvas(400, 400);
+
+    //makes the cursor invisible so that the graphic we create "is" the cursor
+    noCursor();
+
 }
 
 /**
@@ -35,6 +39,10 @@ function draw() {
 
     // Move user circle
     moveUser();
+
+    //Move the puck
+    movePuck();
+
 
     // Draw the user and puck
     drawUser();
@@ -47,6 +55,18 @@ function draw() {
 function moveUser() {
     user.x = mouseX;
     user.y = mouseY;
+}
+
+
+function movePuck() {
+    const d = dist(user.x, user.y, puck.x, puck.y);
+    const overlap = (d < user.size / 2 + puck.size / 2);
+    if (overlap) {
+        console.log("OVERLAP");
+    }
+    else {
+        console.log("NO OVERLAP");
+    }
 }
 
 /**
