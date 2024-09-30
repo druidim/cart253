@@ -62,10 +62,8 @@ function movePuck() {
     const d = dist(user.x, user.y, puck.x, puck.y);
     const overlap = (d < user.size / 2 + puck.size / 2);
     if (overlap) {
-        console.log("OVERLAP");
-    }
-    else {
-        console.log("NO OVERLAP");
+        const dx = user.x - puck.x;
+        const dy = user.y - puck.y;
     }
 }
 
