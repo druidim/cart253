@@ -59,13 +59,33 @@ function moveUser() {
 
 
 function movePuck() {
-    const d = dist(user.x, user.y, puck.x, puck.y);
+    //check overlap
+    const d = dist(user.x, user.y, puck.x, puck.y); //thanks pythag
     const overlap = (d < user.size / 2 + puck.size / 2);
     if (overlap) {
+        //check distance (magnitude)
         const dx = user.x - puck.x;
         const dy = user.y - puck.y;
+        if (abs(dx) < abs(dy)) {
+            //check relative position
+            if (dx < 0) {
+                puck.x += 1;
+            }
+            else if (dx > 0) {
+                puck.x -= 1;
+            }
+        }
+        else if (abs(dy) < abs(dx)) {
+            if (dy < 0) {
+                puck.y += 1;
+            }
+            else if (dy > 0) {
+                puck.x -= 1;
+            }
+        }
     }
 }
+
 
 /**
  * Displays the user circle
