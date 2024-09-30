@@ -66,7 +66,7 @@ function movePuck() {
         //check distance (magnitude)
         const dx = user.x - puck.x;
         const dy = user.y - puck.y;
-        if (abs(dx) < abs(dy)) {
+        if (abs(dx) > abs(dy)) {
             //check relative position
             if (dx < 0) {
                 puck.x += 1;
@@ -75,12 +75,12 @@ function movePuck() {
                 puck.x -= 1;
             }
         }
-        else if (abs(dy) < abs(dx)) {
+        else if (abs(dy) > abs(dx)) {
             if (dy < 0) {
                 puck.y += 1;
             }
             else if (dy > 0) {
-                puck.x -= 1;
+                puck.y -= 1;
             }
         }
     }
