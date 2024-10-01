@@ -118,4 +118,4 @@ function drawBanana() {
     arc(banana.x, banana.y, banana.w, banana.h, 20, PI);
     pop();
 
-}
+} sdag
