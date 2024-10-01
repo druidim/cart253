@@ -107,8 +107,8 @@ function drawUser() {
  */
 function drawBanana() {
     //stops the banana from going off-screen
-    banana.x = constrain(banana.x, 0, 600);
-    banana.y = constrain(banana.y, 0, 630);
+    banana.x = constrain(banana.x, 50, 385);
+    banana.y = constrain(banana.y, 10, 375);
 
     //draws the banana
     push();
@@ -118,4 +118,4 @@ function drawBanana() {
     arc(banana.x, banana.y, banana.w, banana.h, 20, PI);
     pop();
 
-} sdag
+}
