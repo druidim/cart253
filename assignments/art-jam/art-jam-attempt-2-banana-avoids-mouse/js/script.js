@@ -1,9 +1,9 @@
 /**
- * Circle Master
- * Pippin Barr
+ * Banana Split
+ * Laura Slabbert
  *
- * This will be a program in which the user can move a circle
- * on the canvas using their own circle to "lead" it around.
+ * This program allows the user to chase a banana around the screen, 
+ * affecting its ripeness.
  */
 
 const banana = {
@@ -63,7 +63,9 @@ function moveUser() {
 
 
 function moveBanana() {
-    //check overlap
+    //check overlap 
+    //(in the banana version, they don't visibly overlap, but because of the weirdness 
+    //of the arc shape, this is what makes the most sense to me).
     const d = dist(user.x, user.y, banana.x, banana.y); //thanks pythag
     const overlap = (d < user.x + banana.x);
     if (overlap) {
@@ -81,7 +83,7 @@ function moveBanana() {
         }
         else if (abs(dy) > abs(dx)) {
             if (dy < 0) {
-                banana.y += 1;
+                banana.y += 3;
             }
             else if (dy > 0) {
                 banana.y -= 1;
@@ -109,7 +111,7 @@ function drawBanana() {
     //stops the banana from going off-screen
     banana.x = constrain(banana.x, 50, 385);
     banana.y = constrain(banana.y, 10, 375);
-    fga
+
     //draws the banana
     push();
     noFill();
