@@ -109,7 +109,7 @@ function drawBanana() {
     //stops the banana from going off-screen
     banana.x = constrain(banana.x, 50, 385);
     banana.y = constrain(banana.y, 10, 375);
-
+    fga
     //draws the banana
     push();
     noFill();
