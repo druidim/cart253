@@ -7,11 +7,15 @@
  */
 
 const banana = {
-    x: 350,
-    y: 350,
-    size: 100,
-    fill: "#ff0000"
-};
+    r: 255,
+    g: 200,
+    b: 0,
+    x: 320,
+    y: 320,
+    w: 80,
+    h: 30,
+
+}
 
 const user = {
     x: undefined, // will be mouseX
@@ -61,7 +65,7 @@ function moveUser() {
 function moveBanana() {
     //check overlap
     const d = dist(user.x, user.y, banana.x, banana.y); //thanks pythag
-    const overlap = (d < user.size / 2 + banana.size / 2);
+    const overlap = (d < user.x + banana.x);
     if (overlap) {
         //check distance (magnitude)
         const dx = user.x - banana.x;
@@ -99,12 +103,19 @@ function drawUser() {
 }
 
 /**
- * Displays the puck circle
+ * Displays the banana arc
  */
-function drawPuck() {
+function drawBanana() {
+    //stops the banana from going off-screen
+    banana.x = constrain(banana.x, 0, 600);
+    banana.y = constrain(banana.y, 0, 630);
+
+    //draws the banana
     push();
-    noStroke();
-    fill(puck.fill);
-    ellipse(puck.x, puck.y, puck.size);
+    noFill();
+    stroke(banana.r, banana.g, banana.b)
+    strokeWeight(15);
+    arc(banana.x, banana.y, banana.w, banana.h, 20, PI);
     pop();
+
 }
