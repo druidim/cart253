@@ -7,17 +7,15 @@
 
 "use strict";
 
-//let x = constrain(mouseX, 0, 640);
-//let y = constrain(mouseY, 0, 640);
-hi
-let banana = {
+const banana = {
     red: 255,
     green: 200,
     blue: 0,
     x: 320,
     y: 320,
     w: 80,
-    h: 80,
+    h: 30,
+
 }
 /**
  * Draws the canvas
@@ -33,8 +31,6 @@ function setup() {
 function draw() {
     //draws the background 
     background(128, 143, 209);
-
-
     //changes the banana from yellow to green
     banana.red -= 0.25;
     banana.red = constrain(banana.red, 204, 255);
@@ -48,6 +44,6 @@ function draw() {
     noFill();
     stroke(banana.red, banana.green, banana.blue)
     strokeWeight(15);
-    arc(mouseX, mouseY, 80, 30, 20, PI);
+    arc(banana.x, banana.y, banana.w, banana.h, 20, PI);
     pop();
 }
