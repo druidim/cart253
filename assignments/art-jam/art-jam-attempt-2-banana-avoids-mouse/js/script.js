@@ -6,7 +6,7 @@
  * on the canvas using their own circle to "lead" it around.
  */
 
-const puck = {
+const banana = {
     x: 350,
     y: 350,
     size: 100,
@@ -40,13 +40,13 @@ function draw() {
     // Move user circle
     moveUser();
 
-    //Move the puck
-    movePuck();
+    //Move the banana
+    moveBanana();
 
 
-    // Draw the user and puck
+    // Draw the user and banana
     drawUser();
-    drawPuck();
+    drawBanana();
 }
 
 /**
@@ -58,29 +58,29 @@ function moveUser() {
 }
 
 
-function movePuck() {
+function moveBanana() {
     //check overlap
-    const d = dist(user.x, user.y, puck.x, puck.y); //thanks pythag
-    const overlap = (d < user.size / 2 + puck.size / 2);
+    const d = dist(user.x, user.y, banana.x, banana.y); //thanks pythag
+    const overlap = (d < user.size / 2 + banana.size / 2);
     if (overlap) {
         //check distance (magnitude)
-        const dx = user.x - puck.x;
-        const dy = user.y - puck.y;
+        const dx = user.x - banana.x;
+        const dy = user.y - banana.y;
         if (abs(dx) > abs(dy)) {
             //check relative position
             if (dx < 0) {
-                puck.x += 1;
+                banana.x += 1;
             }
             else if (dx > 0) {
-                puck.x -= 1;
+                banana.x -= 1;
             }
         }
         else if (abs(dy) > abs(dx)) {
             if (dy < 0) {
-                puck.y += 1;
+                banana.y += 1;
             }
             else if (dy > 0) {
-                puck.y -= 1;
+                banana.y -= 1;
             }
         }
     }
