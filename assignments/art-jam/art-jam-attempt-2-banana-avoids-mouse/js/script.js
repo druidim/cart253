@@ -7,14 +7,20 @@
  */
 
 const banana = {
-    r: 255,
-    g: 200,
-    b: 0,
+    //determines the banana's shape and size
     x: 320,
     y: 320,
     w: 80,
     h: 30,
+    //determines the banana's "fill" (actually "stroke")
+    fill: "#ffe369", // Starts out classic yellow
+    // Possible "fills" for the creature that show its fear level
+    fills: {
+        bored: "#ffe369", // yellow
+        scared: "#b0d481", // green
+        dead: "#735108", // brown
 
+    },
 }
 
 const user = {
@@ -115,7 +121,7 @@ function drawBanana() {
     //draws the banana
     push();
     noFill();
-    stroke(banana.r, banana.g, banana.b)
+    stroke(banana.fill)
     strokeWeight(15);
     arc(banana.x, banana.y, banana.w, banana.h, 20, PI);
     pop();
