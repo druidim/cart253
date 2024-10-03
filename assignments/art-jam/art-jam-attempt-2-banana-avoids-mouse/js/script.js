@@ -14,14 +14,21 @@ const banana = {
     h: 30,
     //determines the banana's "fill" (actually "stroke")
     fill: "#ffe369", // Starts out  yellow
-    // Possible "fills" for the creature that show its fear level
+    // Possible "fills" for the banana that show its fear level
     fills: {
         bored: "#ffe369", // yellow
         scared: "#b0d481", // green
         dead: "#735108", // brown
 
     },
+
+    //NOTETOSELF messing around here
+    alive: true,
+    fearLevel: 0,
+    fearThreshold: 500,
 }
+
+
 
 const user = {
     x: undefined, // will be mouseX
@@ -102,9 +109,18 @@ function moveBanana() {
 
 //NOTETOSELF This is where I started messing with things to make the banana change colour
 function checkInput() {
+    if (!banana.alive) {
+        return;
+    }
     //makes the banana "scared" (turn green) when it touches the walls/ "is cornered"
     if (banana.x === 385 || banana.x === 50 || banana.y === 10 || banana.y >= 374) {
         banana.fill = banana.fills.scared;
+        banana.fearLevel += 1;
+
+        if (banana.fearLevel > banana.fearThreshold) {
+            banana.alive = false;
+            banana.fill = banana.fills.dead;
+        }
     }
     else if (banana.x <= 300 || banana.x >= 65 || banana.y >= 45 || banana.y <= 360) {
 
