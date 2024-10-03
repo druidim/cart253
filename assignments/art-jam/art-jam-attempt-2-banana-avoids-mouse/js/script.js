@@ -3,7 +3,7 @@
  * Laura Slabbert
  *
  * This program allows the user to chase a banana around the screen, 
- * affecting its ripeness.
+ * and its fear will affect its ripeness.
  */
 
 
@@ -52,6 +52,9 @@ function setup() {
     //makes the cursor invisible so that the graphic we create "is" the cursor
     noCursor();
 
+    background(200);
+
+
 }
 
 /**
@@ -71,8 +74,10 @@ function draw() {
     checkInput();
 
     // Draws the user and banana
+    drawText();
     drawUser();
     drawBanana();
+
 }
 
 /**
@@ -117,7 +122,7 @@ function moveBanana() {
     }
     //stops the banana from going off-screen
     banana.x = constrain(banana.x, banana.image.width / 2, width - banana.image.width / 2);
-    banana.y = constrain(banana.y, 0, height);
+    banana.y = constrain(banana.y, banana.image.height / 2, height - banana.image.height / 2);
 }
 
 //changes the banana's colour based on whether or not it is afraid
@@ -126,7 +131,7 @@ function checkInput() {
         return;
     }
     //makes the banana "scared" (turn green) when it touches the walls/ "is cornered"
-    if (banana.x === banana.image.width / 2 || banana.x === width - banana.image.width / 2 || banana.y === 0 || banana.y === height) {
+    if (banana.x === banana.image.width / 2 || banana.x === width - banana.image.width / 2 || banana.y === banana.image.height / 2 || banana.y === height - banana.image.height / 2) {
         banana.fill = banana.fills.scared;
         banana.fearLevel += 1;
         //if the banana is scared for too long, it dies of fright
@@ -142,7 +147,13 @@ function checkInput() {
     }
 }
 
-
+function drawText() {
+    textSize(32);
+    fill(255);
+    noStroke();
+    strokeWeight(4);
+    text('KILL THE BANANA', 60, 200);
+}
 
 /**
  * Displays the user circle
@@ -165,4 +176,9 @@ function drawBanana() {
 
 
 }
+
+
+
+
+
 
