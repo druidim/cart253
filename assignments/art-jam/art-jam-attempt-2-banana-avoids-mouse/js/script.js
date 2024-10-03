@@ -13,7 +13,7 @@ const banana = {
     w: 80,
     h: 30,
     //determines the banana's "fill" (actually "stroke")
-    fill: "#ffe369", // Starts out classic yellow
+    fill: "#ffe369", // Starts out  yellow
     // Possible "fills" for the creature that show its fear level
     fills: {
         bored: "#ffe369", // yellow
@@ -53,6 +53,8 @@ function draw() {
     //Move the banana
     moveBanana();
 
+    //NOTETOSELF Checks what colour the banana should be(?)
+    checkInput();
 
     // Draw the user and banana
     drawUser();
@@ -98,6 +100,21 @@ function moveBanana() {
     }
 }
 
+//NOTETOSELF This is where I started messing with things to make the banana change colour
+function checkInput() {
+    if (banana.x === 385 || banana.x === 50) {
+        banana.fill = banana.fills.scared;
+    }
+}
+
+
+
+
+
+
+
+
+//NOTETOSELF this is where I stopped messing with things to make the banana change colour
 
 /**
  * Displays the user circle

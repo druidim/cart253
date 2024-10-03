@@ -18,4 +18,6 @@ The movement of the banana and the user were directly copied from the conditiona
 
 The constrain that keeps the banana on-screen was references from the Mr. Furious challenge.
 
-The shape of the banana was made referencing the handle from the umbrella challenge.
+The shape of the banana was made by modifying the handle from the umbrella challenge.
+
+The colour changes of the banana were made while copying / referencing / modifying the "creature loves mouse/massage" and "death by boredom" instructional videos.
