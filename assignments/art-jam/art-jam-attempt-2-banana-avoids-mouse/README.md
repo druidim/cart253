@@ -21,3 +21,5 @@ The constrain that keeps the banana on-screen was referenced from the Mr. Furiou
 The shape of the banana was made by modifying the handle from the umbrella challenge.
 
 The colour changes of the banana were made while copying / referencing / modifying the "creature loves mouse/massage" and "death by boredom" instructional videos.
+
+The map function was copy/pasted and then edited very slightly from the p5 reference site.

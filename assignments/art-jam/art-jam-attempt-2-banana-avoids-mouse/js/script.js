@@ -3,7 +3,7 @@
  * Laura Slabbert
  *
  * This program allows the user to chase a banana around the screen, 
- * and its fear will affect its ripeness.
+ * and its fear will affect its ripeness.The user's concience is manipulated by "KILL" and "SPARE" messages that fade in and out of view.
  */
 
 
