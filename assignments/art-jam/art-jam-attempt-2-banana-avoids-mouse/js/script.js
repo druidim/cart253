@@ -47,16 +47,16 @@ function setup() {
 function draw() {
     background("#aaaaaa");
 
-    // Move user circle
+    // Moves user circle
     moveUser();
 
-    //Move the banana
+    //Moves the banana
     moveBanana();
 
-    //NOTETOSELF Checks what colour the banana should be(?)
+    //Checks what colour the banana should be
     checkInput();
 
-    // Draw the user and banana
+    // Draws the user and banana
     drawUser();
     drawBanana();
 }
@@ -102,8 +102,14 @@ function moveBanana() {
 
 //NOTETOSELF This is where I started messing with things to make the banana change colour
 function checkInput() {
+    //makes the banana "scared" (turn green) when it touches the walls/ "is cornered"
     if (banana.x === 385 || banana.x === 50 || banana.y === 10 || banana.y >= 374) {
         banana.fill = banana.fills.scared;
+    }
+    else if (banana.x <= 383 || banana.x >= 48 || banana.y >= 12 || banana.y <= 372) {
+
+        //otherwise the banana is bored
+        banana.fill = banana.fills.bored;
     }
 }
 
