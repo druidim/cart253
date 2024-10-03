@@ -16,7 +16,7 @@ let banana = {
     alive: true,
     fearLevel: 0,
     fearThreshold: 500,
-    fearDistance: 100,
+    fearDistance: 200,
     image: undefined,
 
 
@@ -28,6 +28,8 @@ let banana = {
         dead: "#735108",
     }
 }
+
+
 
 function preload() {
     // Load the banana-yellow image
@@ -51,16 +53,13 @@ function setup() {
 
     //makes the cursor invisible so that the graphic we create "is" the cursor
     noCursor();
-
-    background(200);
-
-
 }
 
 /**
  * Move the user circle, check for overlap, draw the two circles
  */
 function draw() {
+
     background("#aaaaaa");
 
 
@@ -74,6 +73,7 @@ function draw() {
     checkInput();
 
     // Draws the user and banana
+    drawCircle();
     drawText();
     drawUser();
     drawBanana();
@@ -147,12 +147,45 @@ function checkInput() {
     }
 }
 
+function drawCircle() {
+    let c = map(mouseY, 0, 255, 0, 255);
+
+    // Style the circle.
+    fill(c);
+
+    // Draw the circle.
+    rect(0, 0, 400, 400);
+}
+
+//draws the KILL and SPARE texts
 function drawText() {
+
+    //draws "kill the banana" at the top of the screen
+    push();
     textSize(32);
     fill(255);
     noStroke();
     strokeWeight(4);
-    text('KILL THE BANANA', 60, 200);
+    text('KILL THE BANANA', 60, 50);
+    pop();
+
+    //draws "kill the banana" at the top of the screen
+    push();
+    textSize(32);
+    fill(255);
+    noStroke();
+    strokeWeight(4);
+    text('KILL THE BANANA', 60, 350);
+    pop();
+
+    //draws "spare the banana" in the centre of the screen
+    push();
+    textSize(32);
+    fill(0);
+    noStroke();
+    strokeWeight(4);
+    text('SPARE THE BANANA', 50, 200);
+    pop();
 }
 
 /**
