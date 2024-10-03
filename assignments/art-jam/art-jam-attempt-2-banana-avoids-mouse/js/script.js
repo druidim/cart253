@@ -107,7 +107,7 @@ function moveBanana() {
     }
 }
 
-//NOTETOSELF This is where I started messing with things to make the banana change colour
+//changes the banana's colour based on whether or not it is afraid
 function checkInput() {
     if (!banana.alive) {
         return;
@@ -116,7 +116,7 @@ function checkInput() {
     if (banana.x === 385 || banana.x === 50 || banana.y === 10 || banana.y >= 374) {
         banana.fill = banana.fills.scared;
         banana.fearLevel += 1;
-
+        //if the banana is scared for too long, it dies of fright
         if (banana.fearLevel > banana.fearThreshold) {
             banana.alive = false;
             banana.fill = banana.fills.dead;
