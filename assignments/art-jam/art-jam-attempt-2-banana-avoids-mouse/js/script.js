@@ -78,7 +78,10 @@ function moveUser() {
 
 
 function moveBanana() {
-    //check overlap 
+    if (!banana.alive) {
+        return;
+    }
+    //check overlap
     //(in the banana version, they don't visibly overlap, but because of the weirdness 
     //of the arc shape, this is what makes the most sense to me).
     const d = dist(user.x, user.y, banana.x, banana.y); //thanks pythag
@@ -122,8 +125,8 @@ function checkInput() {
             banana.fill = banana.fills.dead;
         }
     }
-    else if (banana.x <= 300 || banana.x >= 65 || banana.y >= 45 || banana.y <= 360) {
-
+    else {
+        banana.fearLevel = 0;
         //otherwise the banana is bored
         banana.fill = banana.fills.bored;
     }
