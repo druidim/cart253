@@ -106,7 +106,7 @@ function checkInput() {
     if (banana.x === 385 || banana.x === 50 || banana.y === 10 || banana.y >= 374) {
         banana.fill = banana.fills.scared;
     }
-    else if (banana.x <= 383 || banana.x >= 48 || banana.y >= 12 || banana.y <= 372) {
+    else if (banana.x <= 300 || banana.x >= 65 || banana.y >= 45 || banana.y <= 360) {
 
         //otherwise the banana is bored
         banana.fill = banana.fills.bored;
