@@ -131,13 +131,6 @@ function checkInput() {
 
 
 
-
-
-
-
-
-//NOTETOSELF this is where I stopped messing with things to make the banana change colour
-
 /**
  * Displays the user circle
  */
@@ -166,3 +159,4 @@ function drawBanana() {
     pop();
 
 }
+
