@@ -98,7 +98,7 @@ function moveBanana() {
         }
         else if (abs(dy) > abs(dx)) {
             if (dy < 0) {
-                banana.y += 3;
+                banana.y += 1;
             }
             else if (dy > 0) {
                 banana.y -= 1;
