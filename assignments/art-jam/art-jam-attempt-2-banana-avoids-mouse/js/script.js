@@ -6,6 +6,13 @@
  * affecting its ripeness.
  */
 
+
+let bananaImage = undefined;
+
+function preload() {
+    bananaImage = loadImage("assets/images/banana-yellow.png");
+}
+
 const banana = {
     //determines the banana's shape and size
     x: 320,
@@ -53,6 +60,7 @@ function setup() {
  */
 function draw() {
     background("#aaaaaa");
+    image(bananaImage, 100, 50);
 
     // Moves user circle
     moveUser();
