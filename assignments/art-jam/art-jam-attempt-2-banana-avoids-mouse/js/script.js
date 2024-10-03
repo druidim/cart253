@@ -39,7 +39,6 @@ const banana = {
 
     },
 
-    //NOTETOSELF messing around here
     alive: true,
     fearLevel: 0,
     fearThreshold: 500,

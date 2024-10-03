@@ -16,7 +16,7 @@ This project uses [p5.js](https://p5js.org).
 
 The movement of the banana and the user were directly copied from the conditionals challenge.
 
-The constrain that keeps the banana on-screen was references from the Mr. Furious challenge.
+The constrain that keeps the banana on-screen was referenced from the Mr. Furious challenge.
 
 The shape of the banana was made by modifying the handle from the umbrella challenge.
 
