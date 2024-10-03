@@ -7,11 +7,21 @@
  */
 
 
-let bananaImage = undefined;
+
+
+let banana = {
+    // Position of the banana
+    x: 200,
+    y: 200,
+
+    image: undefined
+};
 
 function preload() {
-    bananaImage = loadImage("assets/images/banana-yellow.png");
+    // Load the bird image into our bird object's image property
+    banana.image = loadImage("assets/images/banana-yellow.png");
 }
+
 
 const banana = {
     //determines the banana's shape and size
@@ -60,7 +70,11 @@ function setup() {
  */
 function draw() {
     background("#aaaaaa");
-    image(bananaImage, 100, 50);
+
+    push();
+    imageMode(CENTER);
+    image(bananaImage, 200, 200);
+    pop();
 
     // Moves user circle
     moveUser();
