@@ -1,5 +1,5 @@
 /**
- * Banana Split
+ * Banana, split!!!
  * Laura Slabbert
  *
  * This program allows the user to chase a banana around the screen, 
@@ -13,38 +13,28 @@ let banana = {
     // Position of the banana
     x: 200,
     y: 200,
-
-    image: undefined
-};
-
-function preload() {
-    // Load the bird image into our bird object's image property
-    banana.image = loadImage("assets/images/banana-yellow.png");
-}
+    alive: true,
+    fearLevel: 0,
+    fearThreshold: 500,
+    fearDistance: 100,
+    image: undefined,
 
 
-const banana = {
-    //determines the banana's shape and size
-    x: 320,
-    y: 320,
-    w: 80,
-    h: 30,
-    //determines the banana's "fill" (actually "stroke")
     fill: "#ffe369", // Starts out  yellow
     // Possible "fills" for the banana that show its fear level
     fills: {
         bored: "#ffe369", // yellow
         scared: "#b0d481", // green
-        dead: "#735108", // brown
-
-    },
-
-    alive: true,
-    fearLevel: 0,
-    fearThreshold: 500,
+        dead: "#735108",
+    }
 }
 
+function preload() {
+    // Load the banana-yellow image
+    banana.image = loadImage("assets/images/banana-yellow.png");
 
+
+}
 
 const user = {
     x: undefined, // will be mouseX
@@ -70,10 +60,6 @@ function setup() {
 function draw() {
     background("#aaaaaa");
 
-    push();
-    imageMode(CENTER);
-    image(bananaImage, 200, 200);
-    pop();
 
     // Moves user circle
     moveUser();
@@ -106,7 +92,7 @@ function moveBanana() {
     //(in the banana version, they don't visibly overlap, but because of the weirdness 
     //of the arc shape, this is what makes the most sense to me).
     const d = dist(user.x, user.y, banana.x, banana.y); //thanks pythag
-    const overlap = (d < user.x + banana.x);
+    const overlap = (d < banana.fearDistance);
     if (overlap) {
         //check distance (magnitude)
         const dx = user.x - banana.x;
@@ -129,6 +115,9 @@ function moveBanana() {
             }
         }
     }
+    //stops the banana from going off-screen
+    banana.x = constrain(banana.x, banana.image.width / 2, width - banana.image.width / 2);
+    banana.y = constrain(banana.y, 0, height);
 }
 
 //changes the banana's colour based on whether or not it is afraid
@@ -137,7 +126,7 @@ function checkInput() {
         return;
     }
     //makes the banana "scared" (turn green) when it touches the walls/ "is cornered"
-    if (banana.x === 385 || banana.x === 50 || banana.y === 10 || banana.y >= 374) {
+    if (banana.x === banana.image.width / 2 || banana.x === width - banana.image.width / 2 || banana.y === 0 || banana.y === height) {
         banana.fill = banana.fills.scared;
         banana.fearLevel += 1;
         //if the banana is scared for too long, it dies of fright
@@ -166,21 +155,14 @@ function drawUser() {
     pop();
 }
 
-/**
- * Displays the banana arc
- */
-function drawBanana() {
-    //stops the banana from going off-screen
-    banana.x = constrain(banana.x, 50, 385);
-    banana.y = constrain(banana.y, 10, 375);
 
-    //draws the banana
+function drawBanana() {
     push();
-    noFill();
-    stroke(banana.fill)
-    strokeWeight(15);
-    arc(banana.x, banana.y, banana.w, banana.h, 20, PI);
+    imageMode(CENTER);
+    tint(banana.fill)
+    image(banana.image, banana.x, banana.y);
     pop();
+
 
 }
 
