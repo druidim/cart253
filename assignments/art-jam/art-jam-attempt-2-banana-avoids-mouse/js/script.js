@@ -102,7 +102,7 @@ function moveBanana() {
 
 //NOTETOSELF This is where I started messing with things to make the banana change colour
 function checkInput() {
-    if (banana.x === 385 || banana.x === 50) {
+    if (banana.x === 385 || banana.x === 50 || banana.y === 10 || banana.y >= 374) {
         banana.fill = banana.fills.scared;
     }
 }
