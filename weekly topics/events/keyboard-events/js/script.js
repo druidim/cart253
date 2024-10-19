@@ -10,7 +10,7 @@
 // Our ball
 const ball = {
     // Position
-    x: 200,
+    x: 300,
     y: 200,
     // Size
     size: 50,
