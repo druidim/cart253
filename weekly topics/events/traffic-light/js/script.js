@@ -4,7 +4,7 @@
  * 
  * A starting point for creating a traffic light
 */
-
+hi guys
 "use strict";
 
 // The traffic light
