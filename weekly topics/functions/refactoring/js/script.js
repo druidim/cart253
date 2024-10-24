@@ -8,7 +8,7 @@
  * This is a project that is intentionally repetitive so that we can practice
  * noticing repetition and using functions (with parameters and return
  * values) to reduce it. That is, modularity and reuse.
- */hi guys
+ */
 
 "use strict";
 
