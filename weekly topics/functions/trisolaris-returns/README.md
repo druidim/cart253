@@ -6,7 +6,7 @@ Author Name
 
 ## Description
 
-This description should help the reader understand what the program is, what any controls do, and perhaps what the desired experience it.peace and love
+This description should help the reader understand what the program is, what any controls do, and perhaps what the desired experience it.
 
 ## Credits
 
