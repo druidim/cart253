@@ -6,28 +6,31 @@
  */
 
 "use strict";
-hi
-// Our flies that will buzz around
-let buzzyTheFly = {
-    x: 200,
-    y: 200,
-    size: 20,
-    buzziness: 3
-};
 
-let jazzyTheFly = {
-    x: 200,
-    y: 200,
-    size: 20,
-    buzziness: 3
-};
+// Our flies that will buzz around
+let buzzyTheFly = undefined
+let jazzyTheFly = undefined
 
 /**
  * Create a canvas
  */
 function setup() {
     createCanvas(400, 400);
+
+    buzzyTheFly = createFly(10);
+    jazzyTheFly = createFly(2);
 }
+
+function createFly(flyBuzziness) {
+    let fly = {
+        x: (100, width - 100),
+        y: (100, width - 100),
+        size: 20,
+        buzziness: flyBuzziness
+    };
+    return fly;
+}
+
 
 /**
  * Background, move and draw buzzy
