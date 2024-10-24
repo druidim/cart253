@@ -36,7 +36,7 @@ function drawSun(x, y, size) {
     const minWeight = 20;
     const maxWeight = 1;
     let d = dist(mouseX, mouseY, x, y);
-    let weight = map(d, 0, width, minWeight, maxWeight);
+    let weight = map(d, 0, width, maxWeight, minWeight);
 
     push();
     strokeWeight(weight);
