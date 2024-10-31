@@ -105,14 +105,12 @@ function resetFly() {
  * Moves the frog in the direction of the keys pressed
  */
 function moveFrog() {
-    //frog.body.x = mouseX;
-    function keyPressed(event) {
-        if (event.keyCode === frog.keys.leftKey) {
-            frog.body.x = frog.body.x - 1;
-        }
-        else if (event.keyCode === frog.keys.rightKey) {
-            frog.body.x = frog.body.x + 1;
-        }
+    //moves frog left
+    if (keyIsDown(frog.keys.leftKey)) {
+        frog.body.x -= 1;
+    }
+    else if (keyIsDown(frog.keys.rightKey)) {
+        frog.body.x += 1;
     }
 
 }
@@ -196,16 +194,10 @@ function checkTongueFlyOverlap() {
 //}
 //}
 function mousePressed() {
-    if (frog.tongue.state === "idle") {
-        frog.tongue.state = "outbound";
-    }
 }
 function keyPressed(event) {
     if (event.keyCode === 87) {
         frog.tongue.state = "outbound";
     }
-    if (frog.tongue.state === "outbound") {
-        frog.tongue.state === "idle";
-    }
-}
 
+}
