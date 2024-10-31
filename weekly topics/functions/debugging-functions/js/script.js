@@ -22,8 +22,8 @@ let bug = {
     // How fast it moves to the destination
     speed: 5,
     // Destination
-    destination: {
-        x: 250,
+    destination: {//destination should be undefined? 
+        x: 250, //should be mouseX/Y?
         y: 250,
         // Includes a size so we know when we get there by overlapping it
         size: 10
@@ -50,7 +50,7 @@ function setup() {
  */
 function createFood() {
     // Create an object with food properties
-    const newFood = {
+    const food = {      //changed NewFood to food?
         x: random(0, width),
         y: random(0, height),
         size: random(10, 20),
@@ -68,7 +68,7 @@ function draw() {
 
     checkEating(bug, food);
 
-    drawElement(food);
+    drawElement(food);//draw "element"??? p5 makes it seem like its only "create" element..
     drawElement(bug);
 }
 
@@ -78,7 +78,7 @@ function draw() {
  */
 function moveBug() {
     // First check if the bug overlaps the destination area
-    if (!overlap(bug)) {
+    if (!overlap(bug, bug.destination)) {
         // If not, find out how far away it is on x and y
         const dx = bug.x - bug.destination.x;
         const dy = bug.y - bug.destination.y;
@@ -100,48 +100,49 @@ function moveBug() {
             bug.y += -bug.speed;
         }
     }
+}//added bracket
 
 
-    /**
-     * All elements in the world are circles with x, y, size and fill
-     * So draw the provided one according to those properties
-     */
-    function drawElement() {
-        push();
-        noStroke();
-        fill(element.fill);
-        ellipse(element.x, element.y, element.size);
-        pop();
+/**
+ * All elements in the world are circles with x, y, size and fill
+ * So draw the provided one according to those properties
+ */
+function drawElement() {
+    push();
+    noStroke();
+    fill(element.fill);
+    ellipse(element.x, element.y, element.size);
+    pop();
+}
+
+/**
+ * Check if the bug overlaps the provided item (the food, but could expand)
+ * If so, make a new food object
+ */
+function checkEating(bug, item) {
+    if (overlap(bug, item)) {
+        food = createFood();
     }
+}
 
-    /**
-     * Check if the bug overlaps the provided item (the food, but could expand)
-     * If so, make a new food object
-     */
-    function checkEating(bug, item) {
-        if (overlap(bug, item)) {
-            food = createFood();
-        }
+/**
+ * Helper function that checks overlapping circles
+ * true if there's an overlap between a and b and false otherwise
+ */
+function overlap(a, b) {
+    const d = dist(a.x, a.y, b.x, b.y);
+    if (d < a.size / 2 + b.size / 2) {
+        return true;
     }
+    else {
+        return true;
+    }
+}
 
-    /**
-     * Helper function that checks overlapping circles
-     * true if there's an overlap between a and b and false otherwise
-     */
-    function overlap(a, b) {
-        const d = dist(a.x, a.y, b.x, b.y);
-        if (d < a.size / 2 + b.size / 2) {
-            return true;
-        }
-        else {
-            return true;
-        }
-    }
-
-    /**
-     * Sets the bug's destination to the mouse click location
-     */
-    function mousePressed() {
-        bug.destination.x = mouseX;
-        bug.destination.y = mouseY;
-    }
+/**
+ * Sets the bug's destination to the mouse click location
+ */
+function mousePressed() {
+    bug.destination.x = mouseX;
+    bug.destination.y = mouseY;
+}
