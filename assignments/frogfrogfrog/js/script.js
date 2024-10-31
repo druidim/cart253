@@ -5,7 +5,7 @@
  * A game of catching flies with your frog-tongue
  * 
  * Instructions:
- * - Move the frog with your mouse
+ * - Move the frog with your keys
  * - Click to launch the tongue
  * - Catch flies
  * 
@@ -48,7 +48,6 @@ const fly = {
     size: 10,
     speed: 3
 };
-
 /**
  * Creates the canvas and initializes the fly
  */
@@ -107,13 +106,15 @@ function resetFly() {
 function moveFrog() {
     //moves frog left
     if (keyIsDown(frog.keys.leftKey)) {
-        frog.body.x -= 1;
+        frog.body.x -= 5;
     }
     else if (keyIsDown(frog.keys.rightKey)) {
-        frog.body.x += 1;
+        frog.body.x += 5;
     }
-
+    //stops the frog from going offscreen
+    frog.body.x = constrain(frog.body.x, frog.body.x / 2, width);
 }
+
 
 /**
  * Handles moving the tongue based on its state
@@ -188,16 +189,8 @@ function checkTongueFlyOverlap() {
 /**
  * Launch the tongue on key press (W) (if it's not launched yet)
  */
-//function mousePressed() {
-//  if (frog.tongue.state === "idle") {
-//    frog.tongue.state = "outbound";
-//}
-//}
-function mousePressed() {
-}
 function keyPressed(event) {
     if (event.keyCode === 87) {
         frog.tongue.state = "outbound";
     }
-
 }
