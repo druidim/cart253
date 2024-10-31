@@ -31,8 +31,14 @@ const frog = {
         speed: 20,
         // Determines how the tongue moves each frame
         state: "idle" // State can be: idle, outbound, inbound
+
+    },
+    // Keys that control the frog's movement
+    keys: {
+        leftKey: 65, // A
+        rightKey: 68 // D
     }
-};
+}
 
 // Our fly
 // Has a position, size, and speed of horizontal movement
@@ -96,10 +102,18 @@ function resetFly() {
 }
 
 /**
- * Moves the frog to the mouse position on x
+ * Moves the frog in the direction of the keys pressed
  */
 function moveFrog() {
     //frog.body.x = mouseX;
+    function keyPressed(event) {
+        if (event.keyCode === frog.keys.leftKey) {
+            frog.body.x = frog.body.x - 1;
+        }
+        else if (event.keyCode === frog.keys.rightKey) {
+            frog.body.x = frog.body.x + 1;
+        }
+    }
 
 }
 
@@ -174,10 +188,24 @@ function checkTongueFlyOverlap() {
 }
 
 /**
- * Launch the tongue on click (if it's not launched yet)
+ * Launch the tongue on key press (W) (if it's not launched yet)
  */
+//function mousePressed() {
+//  if (frog.tongue.state === "idle") {
+//    frog.tongue.state = "outbound";
+//}
+//}
 function mousePressed() {
     if (frog.tongue.state === "idle") {
         frog.tongue.state = "outbound";
     }
 }
+function keyPressed(event) {
+    if (event.keyCode === 87) {
+        frog.tongue.state = "outbound";
+    }
+    if (frog.tongue.state === "outbound") {
+        frog.tongue.state === "idle";
+    }
+}
+
