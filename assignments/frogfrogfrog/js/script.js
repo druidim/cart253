@@ -58,6 +58,13 @@ function setup() {
     resetFly();
 }
 
+//the states of our program listed as properties
+const States = {
+    TITLE: "title",
+    GAME: "frogGamePlay",
+    ENDING: "ending"
+};
+
 // Text to display for the title and ending
 let titleString = "FrogsFrogsFrogs";
 //LAURA ADD INSTRUCTIONS ON HOW THIS WORKS. LIKE TEXT ON THE SCREEN
@@ -87,8 +94,8 @@ function draw() {
     if (state === "title") {
         title();
     }
-    else if (state === "frogGameStart") {
-        frogGameStart();
+    else if (state === "frogGamePlay") {
+        frogGamePlay();
     }
     else if (state === "ending") {
         ending();
@@ -107,11 +114,11 @@ function title() {
     pop();
 
     if (keyIsPressed === true) {
-        state = "frogGameStart";
+        state = "frogGamePlay";
     }
 }
 //checks if the game has been started
-if (state === States.frogGameStart) {
+if (state === States.frogGamePlay) {
 
     //calls the frog game's elements to be drawn
     function draw() {
@@ -260,14 +267,24 @@ function keyPressed(event) {
     }
 }
 
-//counts how many flies escape the frog
+/**
+ * Counts how many flies escape the frog
+ */
 flyCounter();
 
-//flies that escaped the frog buzzing around
+/**
+ * Displays the escaped flies buzzing around
+ */
 survivingFlies();
 
 //text that celebrates the flies' survival
 function fliesSurvivedText() {
+
+    push();
+    text('Flies escaped:')
+    pop();
+
+    push();
     fill("#ffffff");
     text(endingString, width / 2, height / 2)
     pop();
