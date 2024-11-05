@@ -49,10 +49,14 @@ const fly = {
     speed: 3
 };
 /**
- * Creates the canvas and initializes the fly
+ * Creates the canvas, text, and initializes the fly
  */
 function setup() {
     createCanvas(640, 480);
+
+    // Text settings
+    textSize(32);
+    textAlign(CENTER, CENTER);
 
     // Give the fly its first random position
     resetFly();
@@ -77,13 +81,7 @@ let state = "title";
 /**
  * Create the canvas, set up text
  */
-function setup() {
-    createCanvas(500, 500);
 
-    // Text settings
-    textSize(32);
-    textAlign(CENTER, CENTER);
-}
 
 /**
  * Depending on the current state, run the function
@@ -106,10 +104,10 @@ function draw() {
  * Displays the title and waits for the user to press the ENTER key
  */
 function title() {
-    background("#0000ff");
+    background("#c6e9f7");//a light blue
 
     push();
-    fill("#ffffff");
+    fill("#177d0b");//a dark green
     text(titleString, width / 2, height / 2)
     pop();
 
@@ -122,7 +120,7 @@ if (state === States.frogGamePlay) {
 
     //calls the frog game's elements to be drawn
     function draw() {
-        background("#87ceeb");
+        background("#87ceeb");//dark blue
         moveFly();
         drawFly();
         moveFrog();
@@ -133,7 +131,7 @@ if (state === States.frogGamePlay) {
 }
 else if (state === States.ending) {
     function draw() {
-        background("#c6e9f7");
+        background("#c6e9f7");//light blue
         survivingFlies();
         flyCounter();
         fliesSurvivedText();
