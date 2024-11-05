@@ -279,7 +279,7 @@ function checkTongueFlyOverlap() {
 }
 
 function countSeconds() {//LAURA should it be checkinput?
-    //counts up to 60 seconds, at which point the game ends
+    //counts up to 60 seconds, at which point the ending screen is displayed
     if (state === "frogGamePlay")
         time.passed += 1;
 
