@@ -1,12 +1,12 @@
 /**
  * Frogfrogfrog
- * Pippin Barr
+ * Laura Slabbert
  * 
  * A game of catching flies with your frog-tongue
  * 
  * Instructions:
- * - Move the frog with your keys
- * - Click to launch the tongue
+ * - Move the frog with A dnd W keys
+ * - Press W to launch the tongue
  * - Catch flies
  * 
  * Made with p5
@@ -58,14 +58,79 @@ function setup() {
     resetFly();
 }
 
+// Text to display for the title and ending
+let titleString = "FrogsFrogsFrogs";
+//LAURA ADD INSTRUCTIONS ON HOW THIS WORKS. LIKE TEXT ON THE SCREEN
+let endingString = "Fly Party!!!";
+//LAURA YOU HAVE TO CHANGE THIS IF YOU CAN'T GET THE FLY ENDING THING TO WORK
+
+// display the TITLE when the program runs
+let state = "title";
+
+/**
+ * Create the canvas, set up text
+ */
+function setup() {
+    createCanvas(500, 500);
+
+    // Text settings
+    textSize(32);
+    textAlign(CENTER, CENTER);
+}
+
+/**
+ * Depending on the current state, run the function
+ * to handle the state.
+ */
 function draw() {
-    background("#87ceeb");
-    moveFly();
-    drawFly();
-    moveFrog();
-    moveTongue();
-    drawFrog();
-    checkTongueFlyOverlap();
+    // Check the state and call the appropriate function
+    if (state === "title") {
+        title();
+    }
+    else if (state === "frogGameStart") {
+        frogGameStart();
+    }
+    else if (state === "ending") {
+        ending();
+    }
+}
+
+/**
+ * Displays the title and waits for the user to press the ENTER key
+ */
+function title() {
+    background("#0000ff");
+
+    push();
+    fill("#ffffff");
+    text(titleString, width / 2, height / 2)
+    pop();
+
+    if (keyIsPressed === true) {
+        state = "frogGameStart";
+    }
+}
+//checks if the game has been started
+if (state === States.frogGameStart) {
+
+    //calls the frog game's elements to be drawn
+    function draw() {
+        background("#87ceeb");
+        moveFly();
+        drawFly();
+        moveFrog();
+        moveTongue();
+        drawFrog();
+        checkTongueFlyOverlap();
+    }
+}
+else if (state === States.ending) {
+    function draw() {
+        background("#c6e9f7");
+        survivingFlies();
+        flyCounter();
+        fliesSurvivedText();
+    }
 }
 
 /**
@@ -193,4 +258,17 @@ function keyPressed(event) {
     if (event.keyCode === 87) {
         frog.tongue.state = "outbound";
     }
+}
+
+//counts how many flies escape the frog
+flyCounter();
+
+//flies that escaped the frog buzzing around
+survivingFlies();
+
+//text that celebrates the flies' survival
+function fliesSurvivedText() {
+    fill("#ffffff");
+    text(endingString, width / 2, height / 2)
+    pop();
 }
