@@ -15,6 +15,14 @@
 
 "use strict";
 
+//Timer for the Frog game (60 seconds)
+let time = {
+    passed: 0,
+    threshold: 1800
+}
+
+
+
 // Our frog
 const frog = {
     // The frog's body has a position and size
@@ -41,13 +49,26 @@ const frog = {
 }
 
 // Our fly
+//creates the fly that appears during the game
 // Has a position, size, and speed of horizontal movement
 const fly = {
     x: 0,
     y: 200, // Will be random
     size: 10,
-    speed: 3
+    speed: 3,
 };
+
+//creates the flies at the end of the game
+let buzzyFly = {
+    x: undefined,
+    y: undefined,
+    size: 10,
+    buzziness: 4,
+};
+
+
+
+
 /**
  * Creates the canvas, text, and initializes the fly
  */
@@ -70,7 +91,7 @@ const States = {
 };
 
 // Text to display for the title and ending
-let titleString = "FrogsFrogsFrogs";
+let titleString = "FrogFrogFrog";
 //LAURA ADD INSTRUCTIONS ON HOW THIS WORKS. LIKE TEXT ON THE SCREEN
 let endingString = "Fly Party!!!";
 //LAURA YOU HAVE TO CHANGE THIS IF YOU CAN'T GET THE FLY ENDING THING TO WORK
@@ -127,6 +148,7 @@ if (state === States.frogGamePlay) {
         moveTongue();
         drawFrog();
         checkTongueFlyOverlap();
+        countSeconds();
     }
 }
 else if (state === States.ending) {
@@ -256,6 +278,15 @@ function checkTongueFlyOverlap() {
     }
 }
 
+function countSeconds() {//LAURA should it be checkinput?
+    //counts up to 60 seconds, at which point the game ends
+    if (state === "frogGamePlay")
+        time.passed += 1;
+
+    if (time.passed >= time.threshold)
+        state === "ending"
+}
+
 /**
  * Launch the tongue on key press (W) (if it's not launched yet)
  */
@@ -274,6 +305,10 @@ flyCounter();
  * Displays the escaped flies buzzing around
  */
 survivingFlies();
+function moveFly(fly) {
+    fly.x += random(-fly.buzziness, fly.buzziness);
+    fly.y += random(-fly.buzziness, fly.buzziness);
+}
 
 //text that celebrates the flies' survival
 function fliesSurvivedText() {
