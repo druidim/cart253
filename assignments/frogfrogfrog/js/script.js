@@ -112,7 +112,7 @@ function moveFrog() {
         frog.body.x += 5;
     }
     //stops the frog from going offscreen
-    frog.body.x = constrain(frog.body.x, frog.body.x / 2, width);
+    frog.body.x = constrain(frog.body.x, frog.body.size / 2, width - frog.body.size / 2);
 }
 
 
