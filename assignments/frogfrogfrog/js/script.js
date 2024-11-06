@@ -21,7 +21,8 @@ let time = {
     threshold: 1800
 }
 
-
+//Number of escaped flies, to be counted at the end of the game
+let numberOfFlies = 0
 
 // Our frog
 const frog = {
@@ -58,17 +59,6 @@ const fly = {
     speed: 3,
 };
 
-//creates the flies at the end of the game
-let buzzyFly = {
-    x: undefined,
-    y: undefined,
-    size: 10,
-    buzziness: 4,
-};
-
-
-
-
 /**
  * Creates the canvas, text, and initializes the fly
  */
@@ -92,16 +82,16 @@ const States = {
 
 // Text to display for the title and ending
 let titleString = "FrogFrogFrog";
+
+//Instructional text to display below title
+let instructionString = "Press any key to start"
+let controlString = "Use A and S to move frog, and W to shoot tounge"
+
 //LAURA ADD INSTRUCTIONS ON HOW THIS WORKS. LIKE TEXT ON THE SCREEN
-let endingString = "Fly Party!!!";
-//LAURA YOU HAVE TO CHANGE THIS IF YOU CAN'T GET THE FLY ENDING THING TO WORK
+let endingString = "Congratulations to all the surviving flies!";
 
-// display the TITLE when the program runs
+// display the TITLE state when the program runs
 let state = "title";
-
-/**
- * Create the canvas, set up text
- */
 
 
 /**
@@ -122,7 +112,7 @@ function draw() {
 }
 
 /**
- * Displays the title and waits for the user to press the ENTER key
+ * Displays the title and waits for the user to press any key
  */
 function title() {
     background("#c6e9f7");//a light blue
@@ -136,7 +126,7 @@ function title() {
         state = "frogGamePlay";
     }
 }
-//checks if the game has been started
+//checks if the game has been started, then calls the game's components
 if (state === States.frogGamePlay) {
 
     //calls the frog game's elements to be drawn
@@ -149,13 +139,12 @@ if (state === States.frogGamePlay) {
         drawFrog();
         checkTongueFlyOverlap();
         countSeconds();
+        flyCounter();
     }
 }
 else if (state === States.ending) {
     function draw() {
         background("#c6e9f7");//light blue
-        survivingFlies();
-        flyCounter();
         fliesSurvivedText();
     }
 }
@@ -206,7 +195,6 @@ function moveFrog() {
     //stops the frog from going offscreen
     frog.body.x = constrain(frog.body.x, frog.body.size / 2, width - frog.body.size / 2);
 }
-
 
 /**
  * Handles moving the tongue based on its state
@@ -299,26 +287,28 @@ function keyPressed(event) {
 /**
  * Counts how many flies escape the frog
  */
-flyCounter();
+function flyCounter() {
+    if (fly.x === width) {
+        numberOfFlies += 1
+    }
+}
 
 /**
  * Displays the escaped flies buzzing around
  */
-survivingFlies();
-function moveFly(fly) {
-    fly.x += random(-fly.buzziness, fly.buzziness);
-    fly.y += random(-fly.buzziness, fly.buzziness);
-}
 
 //text that celebrates the flies' survival
 function fliesSurvivedText() {
 
     push();
-    text('Flies escaped:')
+    fill("#ffffff");
+    text(endingString, width / 2, 120)
     pop();
 
     push();
-    fill("#ffffff");
-    text(endingString, width / 2, height / 2)
+    text(numberOfFlies, 310, 240)
     pop();
+
+    push();
+    text("flies survived", 320, 240)
 }
