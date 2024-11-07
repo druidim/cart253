@@ -21,9 +21,6 @@ let time = {
     threshold: 1800
 }
 
-//Number of escaped flies, to be counted at the end of the game
-let numberOfFlies = 0
-
 // Our frog
 const frog = {
     // The frog's body has a position and size
@@ -59,6 +56,9 @@ const fly = {
     speed: 3,
 };
 
+//Number of escaped flies, to be counted at the end of the game
+let numberOfFlies = 0
+
 /**
  * Creates the canvas, text, and initializes the fly
  */
@@ -66,7 +66,7 @@ function setup() {
     createCanvas(640, 480);
 
     // Text settings
-    textSize(32);
+    textSize(28);
     textAlign(CENTER, CENTER);
 
     // Give the fly its first random position
@@ -84,15 +84,14 @@ const States = {
 let titleString = "FrogFrogFrog";
 
 //Instructional text to display below title
+let controlString = "Use A and S to move frog, and W to shoot tongue"
 let instructionString = "Press any key to start"
-let controlString = "Use A and S to move frog, and W to shoot tounge"
 
-//LAURA ADD INSTRUCTIONS ON HOW THIS WORKS. LIKE TEXT ON THE SCREEN
+//text that displays at the end of the game
 let endingString = "Congratulations to all the surviving flies!";
 
 // display the TITLE state when the program runs
 let state = "title";
-
 
 /**
  * Depending on the current state, run the function
@@ -100,34 +99,46 @@ let state = "title";
  */
 function draw() {
     // Check the state and call the appropriate function
-    if (state === "title") {
+    if (state === States.TITLE) {
         title();
     }
-    else if (state === "frogGamePlay") {
+    else if (state === States.GAME) {
         frogGamePlay();
     }
-    else if (state === "ending") {
+    else if (state === States.ENDING) {
         ending();
     }
 }
 
 /**
- * Displays the title and waits for the user to press any key
+ * Displays the title screen and waits for the user to press any key
  */
 function title() {
     background("#c6e9f7");//a light blue
 
     push();
     fill("#177d0b");//a dark green
-    text(titleString, width / 2, height / 2)
+    text(titleString, width / 2, 120)
     pop();
 
-    if (keyIsPressed === true) {
-        state = "frogGamePlay";
+    push();
+    fill("#177d0b");//a dark green
+    text(controlString, width / 2, 180)
+
+    push();
+    fill("#177d0b")
+    text(instructionString, width / 2, 240)
+    pop();
+
+    push();
+
+    //Starts the game
+    if (keyIsPressed) {
+        state = States.GAME
     }
 }
 //checks if the game has been started, then calls the game's components
-if (state === States.frogGamePlay) {
+if (state === States.GAME) {
 
     //calls the frog game's elements to be drawn
     function draw() {
@@ -142,7 +153,7 @@ if (state === States.frogGamePlay) {
         flyCounter();
     }
 }
-else if (state === States.ending) {
+else if (state === States.ENDING) {
     function draw() {
         background("#c6e9f7");//light blue
         fliesSurvivedText();
