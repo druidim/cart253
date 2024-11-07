@@ -22,6 +22,12 @@ let time = {
     threshold: 500
 }
 
+let croakSFX = undefined;
+function preload() {
+    //Preloads the croak
+    croakSFX = loadSound("assets/sounds/frogCroak.mp3");
+}
+
 // Our frog
 const frog = {
     // The frog's body has a position and size
@@ -43,7 +49,8 @@ const frog = {
     // Keys that control the frog's movement
     keys: {
         leftKey: 65, // A
-        rightKey: 68 // D
+        rightKey: 68, // D
+        croakKey: 83// S
     }
 }
 
@@ -292,7 +299,11 @@ function keyPressed(event) {
     if (event.keyCode === 87) {
         frog.tongue.state = "outbound";
     }
+    else if (event.keyCode === 83 && state === "frogGamePlay") {
+        croakSFX.play();
+    }
 }
+
 
 /**
  * Counts how many flies escape the frog
@@ -322,3 +333,4 @@ function fliesSurvivedText() {
     push();
     text("flies survived", 320, 280)
 }
+
