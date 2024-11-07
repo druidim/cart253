@@ -1,5 +1,6 @@
 /**
  * Frogfrogfrog
+ * 
  * Laura Slabbert
  * 
  * A game of catching flies with your frog-tongue
@@ -47,7 +48,7 @@ const frog = {
 }
 
 // Our fly
-//creates the fly that appears during the game
+//Creates the fly that appears during the game
 // Has a position, size, and speed of horizontal movement
 const fly = {
     x: 0,
@@ -73,7 +74,7 @@ function setup() {
     resetFly();
 }
 
-//the states of our program listed as properties
+//The states of our program listed as properties
 const States = {
     TITLE: "title",
     GAME: "frogGamePlay",
@@ -87,10 +88,10 @@ let titleString = "FrogFrogFrog";
 let controlString = "Use A and S to move frog, and W to shoot tongue"
 let instructionString = "Press any key to start"
 
-//text that displays at the end of the game
+//Text that displays at the end of the game
 let endingString = "Congratulations to all the surviving flies!";
 
-// display the TITLE state when the program runs
+//Display the TITLE state when the program runs
 let state = "title";
 
 /**
@@ -137,10 +138,10 @@ function title() {
         state = States.GAME
     }
 }
-//checks if the game has been started, then calls the game's components
+//Checks if the game has been started, then calls the game's components
 if (state === States.GAME) {
 
-    //calls the frog game's elements to be drawn
+    //Calls the frog game's elements to be drawn
     function draw() {
         background("#87ceeb");//dark blue
         moveFly();
@@ -278,7 +279,7 @@ function checkTongueFlyOverlap() {
 }
 
 function countSeconds() {//LAURA should it be checkinput?
-    //counts up to 60 seconds, at which point the ending screen is displayed
+    //Counts up to 60 seconds, at which point the ending screen is displayed
     if (state === "frogGamePlay")
         time.passed += 1;
 
@@ -308,7 +309,7 @@ function flyCounter() {
  * Displays the escaped flies buzzing around
  */
 
-//text that celebrates the flies' survival
+//Text that celebrates the flies' survival
 function fliesSurvivedText() {
 
     push();
