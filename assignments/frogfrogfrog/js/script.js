@@ -19,7 +19,7 @@
 //Timer for the Frog game (60 seconds)
 let time = {
     passed: 0,
-    threshold: 1800
+    threshold: 500
 }
 
 // Our frog
@@ -138,28 +138,24 @@ function title() {
         state = States.GAME
     }
 }
-//Checks if the game has been started, then calls the game's components
-if (state === States.GAME) {
 
-    //Calls the frog game's elements to be drawn
-    function draw() {
-        background("#87ceeb");//dark blue
-        moveFly();
-        drawFly();
-        moveFrog();
-        moveTongue();
-        drawFrog();
-        checkTongueFlyOverlap();
-        countSeconds();
-        flyCounter();
-    }
+function frogGamePlay() {
+    background("#87ceeb");//dark blue
+    moveFly();
+    drawFly();
+    moveFrog();
+    moveTongue();
+    drawFrog();
+    checkTongueFlyOverlap();
+    countSeconds();
+    flyCounter();
 }
-else if (state === States.ENDING) {
-    function draw() {
-        background("#c6e9f7");//light blue
-        fliesSurvivedText();
-    }
+
+function ending() {
+    background("#c6e9f7");//light blue
+    fliesSurvivedText();
 }
+
 
 /**
  * Moves the fly according to its speed
@@ -168,8 +164,10 @@ else if (state === States.ENDING) {
 function moveFly() {
     // Move the fly
     fly.x += fly.speed;
+
     // Handle the fly going off the canvas
     if (fly.x > width) {
+        numberOfFlies += 1
         resetFly();
     }
 }
@@ -284,7 +282,7 @@ function countSeconds() {//LAURA should it be checkinput?
         time.passed += 1;
 
     if (time.passed >= time.threshold)
-        state === "ending"
+        state = "ending"
 }
 
 /**
@@ -300,7 +298,7 @@ function keyPressed(event) {
  * Counts how many flies escape the frog
  */
 function flyCounter() {
-    if (fly.x === width) {
+    if (fly.x >= width) {
         numberOfFlies += 1
     }
 }
@@ -322,5 +320,5 @@ function fliesSurvivedText() {
     pop();
 
     push();
-    text("flies survived", 320, 240)
+    text("flies survived", 320, 280)
 }
