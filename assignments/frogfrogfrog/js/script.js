@@ -8,7 +8,7 @@
  * Instructions:
  * - Move the frog with A and W keys
  * - Press W to launch the tongue
- * -Press S to croak
+ * - Press S to croak
  * - Catch flies!
  * 
  * Made with p5
@@ -17,16 +17,17 @@
 
 "use strict";
 
-//Timer for the Frog game (30 seconds)
+//Timer for the Frog game
 let time = {
     passed: 0,
-    threshold: 9000
+    threshold: 1800
 }
 
 //Croak sound effect
 let croakSFX = undefined;
+
+//Preloads the croak
 function preload() {
-    //Preloads the croak
     croakSFX = loadSound("assets/sounds/frogCroak.mp3");
 }
 
@@ -48,7 +49,7 @@ const frog = {
         state: "idle" // State can be: idle, outbound, inbound
 
     },
-    // Keys that control the frog's movement
+    // Keys that control the frog's myriad abilities (move left/right, croak)
     keys: {
         leftKey: 65, // A
         rightKey: 68, // D
@@ -94,7 +95,7 @@ const States = {
 let titleString = "FrogFrogFrog";
 
 //Instructional text to display below title
-let controlString1 = "Use A and S to move frog, S to ribbit,"
+let controlString1 = "Use A and S to move frog, S to croak,"
 let controlString2 = "and W to shoot the tongue"
 let instructionString = "Press any key to start"
 
@@ -127,27 +128,23 @@ function draw() {
 function title() {
     background("#c6e9f7");//a light blue
 
-    push();
     fill("#177d0b");//a dark green
+
+    push();
     text(titleString, width / 2, 120)
     pop();
 
     push();
-    fill("#177d0b");//a dark green
     text(controlString1, width / 2, 180)
     pop();
 
     push();
-    fill("#177d0b");//a dark green
     text(controlString2, width / 2, 240)
     pop();
 
     push();
-    fill("#177d0b")
     text(instructionString, width / 2, 300)
     pop();
-
-    push();
 
     //Starts the game
     if (keyIsPressed) {
@@ -164,7 +161,6 @@ function frogGamePlay() {
     drawFrog();
     checkTongueFlyOverlap();
     countSeconds();
-    flyCounter();
 }
 
 function ending() {
@@ -183,7 +179,7 @@ function moveFly() {
 
     // Handle the fly going off the canvas
     if (fly.x > width) {
-        numberOfFlies += 1
+        numberOfFlies += 1 //counts how many flies escape
         resetFly();
     }
 }
@@ -292,8 +288,8 @@ function checkTongueFlyOverlap() {
     }
 }
 
-function countSeconds() {//LAURA should it be checkinput?
-    //Counts up to 60 seconds, at which point the ending screen is displayed
+function countSeconds() {
+    //Counts up to the time threshhold, at which point the ending screen is displayed
     if (state === "frogGamePlay")
         time.passed += 1;
 
@@ -308,33 +304,23 @@ function keyPressed(event) {
     if (event.keyCode === 87) {
         frog.tongue.state = "outbound";
     }
+
+    //Plays the croaking sound
     else if (event.keyCode === 83 && state === "frogGamePlay") {
         croakSFX.play();
     }
 }
 
-
-/**
- * Counts how many flies escape the frog
- */
-function flyCounter() {
-    if (fly.x >= width) {
-        numberOfFlies += 1
-    }
-}
-
-/**
- * Displays the escaped flies buzzing around
- */
-
 //Text that celebrates the flies' survival
 function fliesSurvivedText() {
 
+    fill("#177d0b");//a dark green
+
     push();
-    fill("#ffffff");
     text(endingString, width / 2, 120)
     pop();
 
+    //Displays the number of flies that survived
     push();
     text(numberOfFlies, 310, 240)
     pop();
@@ -342,4 +328,3 @@ function fliesSurvivedText() {
     push();
     text("flies survived", 320, 280)
 }
-
