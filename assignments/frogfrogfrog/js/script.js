@@ -6,9 +6,10 @@
  * A game of catching flies with your frog-tongue
  * 
  * Instructions:
- * - Move the frog with A dnd W keys
+ * - Move the frog with A and W keys
  * - Press W to launch the tongue
- * - Catch flies
+ * -Press S to croak
+ * - Catch flies!
  * 
  * Made with p5
  * https://p5js.org/
@@ -16,12 +17,13 @@
 
 "use strict";
 
-//Timer for the Frog game (60 seconds)
+//Timer for the Frog game (30 seconds)
 let time = {
     passed: 0,
-    threshold: 500
+    threshold: 9000
 }
 
+//Croak sound effect
 let croakSFX = undefined;
 function preload() {
     //Preloads the croak
@@ -92,7 +94,8 @@ const States = {
 let titleString = "FrogFrogFrog";
 
 //Instructional text to display below title
-let controlString = "Use A and S to move frog, and W to shoot tongue"
+let controlString1 = "Use A and S to move frog, S to ribbit,"
+let controlString2 = "and W to shoot the tongue"
 let instructionString = "Press any key to start"
 
 //Text that displays at the end of the game
@@ -131,11 +134,17 @@ function title() {
 
     push();
     fill("#177d0b");//a dark green
-    text(controlString, width / 2, 180)
+    text(controlString1, width / 2, 180)
+    pop();
+
+    push();
+    fill("#177d0b");//a dark green
+    text(controlString2, width / 2, 240)
+    pop();
 
     push();
     fill("#177d0b")
-    text(instructionString, width / 2, 240)
+    text(instructionString, width / 2, 300)
     pop();
 
     push();
