@@ -8,7 +8,7 @@
 "use strict";
 
 // Our array of flies (specifically "fly data" really)
-// Each fly has a position and a size
+// Each fly has a position and a size !
 let flies = [
     {
         x: 100,
