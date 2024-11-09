@@ -33,7 +33,7 @@ let flies = [
  */
 function setup() {
     // Let's make it tiny for some reason
-    createCanvas(200, 200);
+    createCanvas(200, 300);
 }
 
 /**
