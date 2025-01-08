@@ -27,12 +27,19 @@ function draw() {
 
     // How many legs to draw, we want three because
     // it's the legs on one side of the fly
-    const numLegs = 0;
+    const numLegs = 3;
+    //laura bug check, const num legs 0->3
+
     // Loop through the number of legs
-    for (let i = 0, i <numLegs, i++) {
+    for (let i = 0; i < numLegs; i++) {
+        //Laura bug check, commas changed to colons... 
+        //are for-loops the right kind of loop?
+
         // Draw a leg each time, use i to calculate the
         // y position so it goes 100 pixels lower each time
         drawLeg(-50, 50 + i * 100, 50, 400);
+        //Laura bug check: would this line of code actually draw what it needs to?
+        //Would it draw all 3 that it needs to?
     }
 
 }
@@ -49,11 +56,19 @@ function drawLeg(startX, startY, startDiameter, length) {
     let x = startX;
     let y = startY;
     let diameter = 50;
+    //Laura bug check: leg length is not defined? 
+    //Pippin video answer: length is defined om line 40
 
     // Loop until the x-position reaches beyond
     // the right side of the canvas (so that we draw the
     // entire leg across)
-    wile(x >= startX + length) {
+    while (x <= startX + length) {
+        //Laura bug check: wile ->while
+        //Pippin video anser (after "while" issue):
+        // (x >= startX + length) at first, with the values input elsewhere,
+        //was basically saying "-50 (x) was greater than or equal to 350 (500-250),
+        // which is false" so we have to change it to (x *<*= startX + length)(less than!)
+
         // Draw a single circle
         // The circles all added together across the loop
         // will represent our leg, they will jiggle around

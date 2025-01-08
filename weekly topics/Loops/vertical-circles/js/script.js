@@ -30,6 +30,4 @@ function draw() {
         ellipse(x, y, diameter);
         y += diameter;
     }
-
-
 }

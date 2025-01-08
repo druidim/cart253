@@ -25,7 +25,6 @@ const hero = {
 
 function setup() {
     createCanvas(400, 400);
-
     // Place the hero in a starting position
     // We'll also move them on mouse pressed
     placeHero();
@@ -42,7 +41,6 @@ function draw() {
     fill(255, 0, 0);
     ellipse(dangerZone.x, dangerZone.y, dangerZone.size);
     pop();
-
     // Draw the hero
     push();
     fill(255, 255, 0);
@@ -69,7 +67,6 @@ function placeHero() {
         let d = dist(hero.x, hero.y, dangerZone.x, dangerZone.y);
     }
 }
-
 /**
  * Move the hero to a new position on mouse click so we can
  * test out our program further by clicking
