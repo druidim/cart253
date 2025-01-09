@@ -16,22 +16,27 @@ const machines = [{
     y: 100,
     width: 100,
     height: 100,
-    fill: "#ff4400"
-
+    fill: "#ff4400",
+    draggable:true,
+    functionality:100
 }, {
     type: "freezer",
     x: 150,
     y: 100,
     width: 100,
     height: 100,
-    fill: "#bbbbff"
+    fill: "#bbbbff",
+    draggable: false,
+    functionality:87 
 }, {
     type: "crusher",
     x: 300,
     y: 100,
     width: 100,
     height: 100,
-    fill: "#777777"
+    fill: "#777777",
+    draggable:true,
+    functionality:45 //"functionality" and "draggable" are being used here to illustrate the ways we can use data to give defining characteristics to things, I am not actually implimenting these functions
 }
 ];
 
