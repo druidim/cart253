@@ -29,7 +29,7 @@ let circle = {
 let stringData = undefined;
 
 // The language setting (en = English, fr = "French")
-let lang = "french";
+let language = "french";
 
 // Our current state is set to be TITLE so we should
 // display the TITLE when the program runs
@@ -39,7 +39,7 @@ let state = "title";
  * Loads our text data
  */
 function preload() {
-    strings = loadJSON("assets/data/localisation.json");
+    strings = loadJSON("assets/data/localization.json");
 }
 
 /**
@@ -126,6 +126,10 @@ function ending() {
 
     push();
     fill("#ffffff");
-    text(strings.ending[lang], width / 2, height / 2)
+    text(strings.ending[language], width / 2, height / 2)
     pop();
 }
+
+
+
+//Laura note: woah I debugged this one all by myselvers......... #smart #epic
