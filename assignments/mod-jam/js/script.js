@@ -25,7 +25,7 @@ let banana = {
     fills: {
         bored: "#ffe369", // yellow
         scared: "#b0d481", // green
-        dead: "#735108",
+        dead: "#735108", //brown
     }
 }
 
@@ -94,9 +94,7 @@ function moveBanana() {
         return;
     }
     //check overlap
-    //(in the banana version, they don't visibly overlap, but because of the weirdness 
-    //of the arc shape, this is what makes the most sense to me).
-    const d = dist(user.x, user.y, banana.x, banana.y); //thanks pythag
+    const d = dist(user.x, user.y, banana.x, banana.y);
     const overlap = (d < banana.fearDistance);
     if (overlap) {
         //check distance (magnitude)
@@ -209,9 +207,3 @@ function drawBanana() {
 
 
 }
-
-
-
-
-
-
