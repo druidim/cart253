@@ -14,6 +14,27 @@ let railY2 = 710;
 //Distance between rail borders
 let railDistance = 200;
 
+let banana = {
+    // Position of the banana
+    x: 200,
+    y: 200,
+    alive: true,
+    fearLevel: 0,
+    fearThreshold: 500,
+    fearDistance: 200,
+    image: undefined,
+
+
+    fill: "#ffe369", // Starts out  yellow
+    // Possible "fills" for the banana that show its fear level
+    fills: {
+        bored: "#ffe369", // yellow
+        scared: "#b0d481", // green
+        dead: "#735108",
+    }
+}
+
+
 //Preloads the banana images
 function preload() {
     // Load the banana-yellow image
@@ -33,6 +54,9 @@ function draw() {
 
     //Draws the borders of the rails
     rails();
+
+    //Draws the bananas
+    drawBanana();
 }
 
 //Draws the left set of rails.
@@ -105,9 +129,6 @@ function rails() {
 function drawBanana() {
     push();
     imageMode(CENTER);
-    tint(banana.fill)
     image(banana.image, banana.x, banana.y);
     pop();
-
-
 }
