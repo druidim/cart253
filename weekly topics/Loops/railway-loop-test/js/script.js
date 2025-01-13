@@ -87,7 +87,7 @@ function rightTracks() {
 //draws the vertical lines of the rail borders
 function rails() {
     // Keep checking if x is still less than the width...
-    while (railX2 <= 700) {
+    while (railX2 <= width) {
         // If it is, draw the next rail border
         line(railX1, railY2, railX2, railY2);
         // And increase x to move across
