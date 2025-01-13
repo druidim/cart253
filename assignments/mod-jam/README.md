@@ -1,25 +1,21 @@
-# Banana, split!!!
+# Template p5 Project
 
-Laura Slabbert
+Author Name
 
 [View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
 ## Description
 
-This program allows the user to chase a banana with their mouse. Should the user cause the banana too much stress, its ripeness will fluctuate to make it less a-peel-ing.
+This description should help the reader understand what the program is, what any controls do, and perhaps what the desired experience it.
 
 ## Credits
+
+This bit should describe what tools were used. For example:
 
 This project uses [p5.js](https://p5js.org).
 
 ## Attribution
 
-The movement of the banana and the user were directly copied from the conditionals challenge.
+This bit should attribute any assets or other elements used taken from other sources. For example:
 
-The constrain that keeps the banana on-screen was referenced from the Mr. Furious challenge.
-
-The shape of the banana was made by modifying the handle from the umbrella challenge.
-
-The colour changes of the banana were made while copying / referencing / modifying the "creature loves mouse/massage" and "death by boredom" instructional videos.
-
-The map function was copy/pasted and then edited very slightly from the p5 reference site.
+The fish images were sourced from the [Creative Commons image "Georgia Aquarium Fish"](https://search.creativecommons.org/photos/96f6f770-eac1-488c-8abb-16bee7bcc874) by Mike Johnston which is licensed with CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.
