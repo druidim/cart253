@@ -15,25 +15,29 @@ let railY2 = 710;
 let railDistance = 200;
 
 let banana = {
-    // Position of the banana
-    x: 200,
-    y: 200,
+    // Position of the bananas
+    greenX: 150,
+    greenY: 500,
+
+    yellowX: 350,
+    yellowY: 500,
+
+    brownX: 550,
+    brownY: 500,
+
     alive: true,
     fearLevel: 0,
     fearThreshold: 500,
     fearDistance: 200,
     image: undefined,
 
-
     fill: "#ffe369", // Starts out  yellow
-    // Possible "fills" for the banana that show its fear level
     fills: {
-        bored: "#ffe369", // yellow
-        scared: "#b0d481", // green
-        dead: "#735108",
+        young: "#b0d481", // green
+        middleAged: "#ffe369", // yellow
+        old: "#735108", // brown
     }
 }
-
 
 //Preloads the banana images
 function preload() {
@@ -127,8 +131,25 @@ function rails() {
 }
 
 function drawBanana() {
+
+    //draws the green banana
     push();
     imageMode(CENTER);
-    image(banana.image, banana.x, banana.y);
+    tint(banana.fills.young);
+    image(banana.image, banana.greenX, banana.greenY);
+    pop();
+
+    //draws the yellow bananas
+    push();
+    imageMode(CENTER);
+    tint(banana.fills.middleAged);
+    image(banana.image, banana.yellowX, banana.yellowY);
+    pop();
+
+    //draws the brown bananas
+    push();
+    imageMode(CENTER);
+    tint(banana.fills.old);
+    image(banana.image, banana.brownX, banana.brownY);
     pop();
 }
