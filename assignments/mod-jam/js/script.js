@@ -39,10 +39,18 @@ let banana = {
     }
 }
 
+let train = {
+    x: 75,
+    y: 100,
+    image: undefined,
+    speed: 0
+}
+
 //Preloads the banana images
 function preload() {
     // Load the banana-yellow image
     banana.image = loadImage("assets/images/banana-yellow.png");
+    train.image = loadImage("assets/images/train.png")
 }
 
 function draw() {
@@ -61,6 +69,9 @@ function draw() {
 
     //Draws the bananas
     drawBanana();
+
+    //Draws the train
+    drawTrain();
 }
 
 //Draws the left set of rails.
@@ -151,5 +162,12 @@ function drawBanana() {
     imageMode(CENTER);
     tint(banana.fills.old);
     image(banana.image, banana.brownX, banana.brownY);
+    pop();
+}
+
+function drawTrain() {
+    push();
+    imageMode(CENTER);
+    image(train.image, train.x, train.y);
     pop();
 }
