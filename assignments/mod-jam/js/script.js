@@ -76,11 +76,14 @@ function draw() {
 
 function keyPressed() {
     if (key === '1') {
-        train.x = 150
+        train.x = 150;
+        train.y = 250
     } else if (key === '2') {
         train.x = 350;
+        train.y = 250
     } else if (key === '3') {
         train.x = 550;
+        train.y = 250
     }
 }
 
