@@ -74,6 +74,16 @@ function draw() {
     drawTrain();
 }
 
+function keyPressed() {
+    if (key === '1') {
+        train.x = 150
+    } else if (key === '2') {
+        train.x = 350;
+    } else if (key === '3') {
+        train.x = 550;
+    }
+}
+
 //Draws the left set of rails.
 function leftTracks() {
     background(235, 237, 235);
