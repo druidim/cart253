@@ -43,7 +43,7 @@ let train = {
     x: 75,
     y: 100,
     image: undefined,
-    speed: 0
+    speed: 10,
 }
 
 //Preloads the banana images
@@ -72,18 +72,29 @@ function draw() {
 
     //Draws the train
     drawTrain();
+
+    //Moves the train
+    moveTrain();
+
 }
 
 function keyPressed() {
     if (key === '1') {
         train.x = 150;
-        train.y = 250
+        train.y = 250;
     } else if (key === '2') {
         train.x = 350;
         train.y = 250
     } else if (key === '3') {
         train.x = 550;
-        train.y = 250
+        train.y = 250;
+    }
+}
+
+function moveTrain() {
+    if (train.x >= 150) {
+        train.y += train.speed;
+
     }
 }
 
