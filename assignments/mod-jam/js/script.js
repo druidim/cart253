@@ -39,18 +39,27 @@ let banana = {
     }
 }
 
+let flatBanana = {
+    image: undefined,
+
+}
+
 let train = {
     x: 75,
     y: 100,
     image: undefined,
-    speed: 10,
+    speed: 3,
 }
 
 //Preloads the banana images
 function preload() {
-    // Load the banana-yellow image
+    // Load the banana image
     banana.image = loadImage("assets/images/banana-yellow.png");
+    //Load the flattened banana image
+    flatBanana.image = loadImage("assets/images/flat-banana.png")
+    //Load the train image
     train.image = loadImage("assets/images/train.png")
+
 }
 
 function draw() {
@@ -76,6 +85,9 @@ function draw() {
     //Moves the train
     moveTrain();
 
+    //Checks if a banana was hit by a train
+    checkBananaTrainOverlap();
+
 }
 
 function keyPressed() {
@@ -95,6 +107,17 @@ function moveTrain() {
     if (train.x >= 150) {
         train.y += train.speed;
 
+    }
+}
+
+function checkBananaTrainOverlap() {
+    // Get distance from train to banana
+    const d = dist(banana.greenX, banana.greenY, train.x, train.y);
+    // Check if it's an overlap
+    const collision = (d < banana.greenX / 6.5 + train.x / 6.5);
+    if (collision) {
+        //Draws the flattened version of the banana
+        banana.image = flatBanana.image;
     }
 }
 
