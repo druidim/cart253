@@ -2,7 +2,7 @@ function setup() {
     createCanvas(700, 700);
 }
 
-let tarot = undefined;
+let orders = undefined;
 
 //Distance between tracks
 let trackDistance = 40;
@@ -61,8 +61,8 @@ function preload() {
     flatBanana.image = loadImage("assets/images/flat-banana.png");
     //Load the train image
     train.image = loadImage("assets/images/train.png");
-    //Load the tarot readings
-    tarot = loadJSON("assets/data/tarot_interpretations.json");
+    //Load the orders
+    orders = loadJSON("assets/data/train_orders.json");
 }
 
 function draw() {
@@ -225,7 +225,7 @@ function drawTrain() {
 }
 
 function drawReadings() {
-    const description = tarot.description;
+    const description = orders.description;
 
     push();
     textSize(20);
