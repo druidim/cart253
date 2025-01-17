@@ -91,7 +91,11 @@ function draw() {
     //Checks if a banana was hit by a train
     checkBananaTrainOverlap();
 
-    drawReadings();
+    //Draws the orders given to the user
+    drawOrders();
+
+    //Draws the numbers of each track
+    trackNumbers();
 
 }
 
@@ -224,7 +228,7 @@ function drawTrain() {
     pop();
 }
 
-function drawReadings() {
+function drawOrders() {
     const description = orders.description;
 
     push();
@@ -234,4 +238,27 @@ function drawReadings() {
     text(description, width / 2, height / 6);
     pop();
 
+}
+
+function trackNumbers() {
+    push();
+    textSize(50);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    text("1", 50, 500);
+    pop();
+
+    push();
+    textSize(50);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    text("2", 250, 500);
+    pop();
+
+    push();
+    textSize(50);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    text("3", 450, 500);
+    pop();
 }

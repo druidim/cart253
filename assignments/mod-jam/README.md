@@ -18,3 +18,4 @@ This project uses [p5.js](https://p5js.org).
 
 -Collision code from FrogsFrogsFrogs by Pippin Barr
 -Array code from Vertical Circles by Pippin Barr
+-JSON text from Tarot by Pippin Barr
