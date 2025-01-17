@@ -2,6 +2,8 @@ function setup() {
     createCanvas(700, 700);
 }
 
+let tarot = undefined;
+
 //Distance between tracks
 let trackDistance = 40;
 
@@ -56,10 +58,11 @@ function preload() {
     // Load the banana image
     banana.image = loadImage("assets/images/banana-yellow.png");
     //Load the flattened banana image
-    flatBanana.image = loadImage("assets/images/flat-banana.png")
+    flatBanana.image = loadImage("assets/images/flat-banana.png");
     //Load the train image
-    train.image = loadImage("assets/images/train.png")
-
+    train.image = loadImage("assets/images/train.png");
+    //Load the tarot readings
+    tarot = loadJSON("assets/data/tarot_interpretations.json");
 }
 
 function draw() {
@@ -87,6 +90,8 @@ function draw() {
 
     //Checks if a banana was hit by a train
     checkBananaTrainOverlap();
+
+    drawReadings();
 
 }
 
@@ -217,4 +222,16 @@ function drawTrain() {
     imageMode(CENTER);
     image(train.image, train.x, train.y);
     pop();
+}
+
+function drawReadings() {
+    const description = tarot.description;
+
+    push();
+    textSize(20);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    text(description, width / 2, height / 6);
+    pop();
+
 }
