@@ -46,11 +46,11 @@ function addBanana() {
  */
 function createBanana() {
     const banana = {
-        x: random(0, width),
-        y: -100,
+        x: -100,
+        y: random(0, width),
         velocity: {
-            x: 0,
-            y: random(2, 10)
+            x: random(2, 10),
+            y: 0
         },
         size: random(15, 40),
         fill: "#445566"
