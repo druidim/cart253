@@ -130,7 +130,7 @@ function checkBananaTrainOverlap() {
     }
 }
 
-//Draws the left set of rails.
+//Draws the left set of tracks.
 function leftTracks() {
     background(235, 237, 235);
     // Set up the position the first line
@@ -167,7 +167,7 @@ function middleTracks() {
     }
 }
 
-//Draws the right set of rails.
+//Draws the right set of tracks.
 function rightTracks() {
 
     // Set up the position theright first line
