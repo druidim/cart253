@@ -1,19 +1,19 @@
 /**
- * Bug Squasher (Debugging Arrays)
+ * Banana Squasher (Debananaging Arrays)
  * Pippin Barr
  * 
- * Squash bugs by clicking on them. Squish.
+ * Squash bananas by clicking on them. Squish.
  */
 
 "use strict";
 
-// The bugs
-let bugs = [];
+// The bananas
+let bananas = [];
 
-// Time between bugs. This will get bigger.
-const minimumBugDelay = 0.5 * 1000;
-const maximumBugDelay = 2 * 1000;
-let bugDelay = maximumBugDelay;
+// Time between bananas. This will get bigger.
+const minimumBananaDelay = 0.5 * 1000;
+const maximumBananaDelay = 2 * 1000;
+let bananaDelay = maximumBananaDelay;
 
 /**
  * Create the canvas
@@ -21,33 +21,33 @@ let bugDelay = maximumBugDelay;
 function setup() {
     createCanvas(600, 600);
 
-    setTimeout(addBug, bugDelay);
+    setTimeout(addBanana, bananaDelay);
 }
 
 /**
- * Adds a bug to the array, updates the timer to get faster
+ * Adds a banana to the array, updates the timer to get faster
  */
-function addBug() {
-    // Create and add a bug
-    const bug = createBug();
-    bugs.push(bug);
+function addBanana() {
+    // Create and add a banana
+    const banana = createBanana();
+    bananas.push(banana);
 
     // Reduce the delay
-    bugDelay -= random(0, 100);
+    bananaDelay -= random(0, 100);
     // Constrain it (so they don't come TOO fast)
-    bugDelay = constrain(bugDelay, minimumBugDelay, maximumBugDelay);
+    bananaDelay = constrain(bananaDelay, minimumBananaDelay, maximumBananaDelay);
     // Set the new timeout
-    setTimeout(addBug, bugDelay);
+    setTimeout(addBanana, bananaDelay);
 }
 
 /**
- * Creates and returns a randomized bug that will start at the top of the
+ * Creates and returns a randomized banana that will start at the top of the
  * canvas and move down
  */
-function createBug() {
-    const bug = {
-        x: -100,
-        y: random(0, width),
+function createBanana() {
+    const banana = {
+        x: random(0, width),
+        y: -100,
         velocity: {
             x: 0,
             y: random(2, 10)
@@ -55,55 +55,55 @@ function createBug() {
         size: random(15, 40),
         fill: "#445566"
     };
-    return bug;
+    return banana;
 }
 
 /**
- * Move and display the bugs
+ * Move and display the bananas
 */
 function draw() {
     background("#ddeeff");
 
-    // Move and draw the bugs
-    for (let bug of bugs) {
-        moveBug(bug);
-        drawBug(bug);
+    // Move and draw the bananas
+    for (let banana of bananas) {
+        moveBanana(banana);
+        drawBanana(banana);
     }
 }
 
 /**
- * Moves a bug according to its velocity
+ * Moves a banana according to its velocity
  */
-function moveBug(bug) {
-    bug.x += bug.velocity.x;
-    bug.y += bug.velocity.y;
+function moveBanana(banana) {
+    banana.x += banana.velocity.x;
+    banana.y += banana.velocity.y;
 }
 
 /**
- * Draws a bug according to its properties
+ * Draws a banana according to its properties
  */
-function drawBug(bug) {
+function drawBanana(banana) {
     push();
     noStroke();
-    fill(bug.fill);
-    ellipse(bug.x, bug.y, bug.size);
+    fill(banana.fill);
+    ellipse(banana.x, banana.y, banana.size);
     pop();
 }
 
 /**
- * Removes bugs if you click (near) them
+ * Removes bananas if you click (near) them
  */
 function mousePressed() {
-    // We need to check EVERY bug to see if it was clicked
-    for (let bug of bugs) {
-        // Get the distance between the mouse and the bug
-        const d = dist(mouseX, mouseY, bug.x, bug.y);
+    // We need to check EVERY banana to see if it was clicked
+    for (let banana of bananas) {
+        // Get the distance between the mouse and the banana
+        const d = dist(mouseX, mouseY, banana.x, banana.y);
         // Check if it's close enough
-        if (d < bug.size * 2) {
-            // If so get the index of this bug in the bugs array
-            const index = bugs.indexOf(bug);
+        if (d < banana.size * 2) {
+            // If so get the index of this banana in the bananas array
+            const index = bananas.indexOf(banana);
             // And remove it
-            bugs.splice(index, 1);
+            bananas.splice(index, 1);
         }
     }
 }
