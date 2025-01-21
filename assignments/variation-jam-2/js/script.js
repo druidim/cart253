@@ -15,6 +15,8 @@ const minimumBananaDelay = 0.5 * 1000;
 const maximumBananaDelay = 2 * 1000;
 let bananaDelay = maximumBananaDelay;
 
+let bananaImage = undefined;
+
 /**
  * Create the canvas
 */
@@ -24,6 +26,11 @@ function setup() {
     setTimeout(addBanana, bananaDelay);
 }
 
+function preload() {
+    // Load the banana image
+    bananaImage = loadImage("assets/images/banana-yellow.png");
+}
+
 /**
  * Adds a banana to the array, updates the timer to get faster
  */
@@ -31,7 +38,6 @@ function addBanana() {
     // Create and add a banana
     const banana = createBanana();
     bananas.push(banana);
-
     // Reduce the delay
     bananaDelay -= random(0, 100);
     // Constrain it (so they don't come TOO fast)
@@ -47,13 +53,12 @@ function addBanana() {
 function createBanana() {
     const banana = {
         x: -100,
-        y: random(0, width),
+        y: random(200, width),
         velocity: {
-            x: random(2, 10),
+            x: 3,
             y: 0
         },
-        size: random(15, 40),
-        fill: "#445566"
+        fill: "orange",
     };
     return banana;
 }
@@ -86,7 +91,7 @@ function drawBanana(banana) {
     push();
     noStroke();
     fill(banana.fill);
-    ellipse(banana.x, banana.y, banana.size);
+    image(bananaImage, banana.x, banana.y)
     pop();
 }
 
@@ -99,7 +104,7 @@ function mousePressed() {
         // Get the distance between the mouse and the banana
         const d = dist(mouseX, mouseY, banana.x, banana.y);
         // Check if it's close enough
-        if (d < banana.size * 2) {
+        if (d < 25) {
             // If so get the index of this banana in the bananas array
             const index = bananas.indexOf(banana);
             // And remove it
