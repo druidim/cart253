@@ -25,7 +25,13 @@ let car = {
         x: 0,
         y: 5,
     },
+
+    keys: {
+        up: 83, // W
+        down: 87, // S
+    }
 }
+
 
 /**
  * Create the canvas
@@ -89,6 +95,8 @@ function draw() {
     }
     //Draw the car
     drawCar();
+    //Move the car
+    moveCar();
 }
 
 /**
@@ -97,6 +105,18 @@ function draw() {
 function moveBanana(banana) {
     banana.x += banana.velocity.x;
     banana.y += banana.velocity.y;
+}
+
+function moveCar() {
+    //moves car up
+    if (keyIsDown(car.keys.up)) {
+        car.y += 5;
+    }
+    //Moves car down
+    else if (keyIsDown(car.keys.down)) {
+        car.y -= 5;
+    }
+    car.y = constrain(car.y, 150, 525);
 }
 
 function drawRoad() {
