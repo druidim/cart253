@@ -53,7 +53,7 @@ function addBanana() {
 function createBanana() {
     const banana = {
         x: -100,
-        y: random(200, width),
+        y: random(200, 550),
         velocity: {
             x: 3,
             y: 0
@@ -69,6 +69,8 @@ function createBanana() {
 function draw() {
     background("#ddeeff");
 
+    //Draw the road
+    drawRoad();
     // Move and draw the bananas
     for (let banana of bananas) {
         moveBanana(banana);
@@ -82,6 +84,14 @@ function draw() {
 function moveBanana(banana) {
     banana.x += banana.velocity.x;
     banana.y += banana.velocity.y;
+}
+
+function drawRoad() {
+    push();
+    noStroke();
+    fill(100, 100, 100);
+    rect(0, 190, 600, 410);
+    pop();
 }
 
 /**
