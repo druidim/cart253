@@ -17,6 +17,16 @@ let bananaDelay = maximumBananaDelay;
 
 let bananaImage = undefined;
 
+let car = {
+    x: 450,
+    y: 205,
+    image: undefined,
+    velocity: {
+        x: 0,
+        y: 5,
+    },
+}
+
 /**
  * Create the canvas
 */
@@ -29,6 +39,7 @@ function setup() {
 function preload() {
     // Load the banana image
     bananaImage = loadImage("assets/images/banana-yellow.png");
+    car.image = loadImage("assets/images/car.png")
 }
 
 /**
@@ -76,6 +87,8 @@ function draw() {
         moveBanana(banana);
         drawBanana(banana);
     }
+    //Draw the car
+    drawCar();
 }
 
 /**
@@ -102,6 +115,12 @@ function drawBanana(banana) {
     noStroke();
     fill(banana.fill);
     image(bananaImage, banana.x, banana.y)
+    pop();
+}
+
+function drawCar(banana) {
+    push();
+    image(car.image, car.x, car.y);
     pop();
 }
 
