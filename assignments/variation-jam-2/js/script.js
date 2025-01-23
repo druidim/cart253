@@ -7,6 +7,8 @@
 
 "use strict";
 
+
+
 // The bananas
 let bananas = [];
 
@@ -16,6 +18,7 @@ const maximumBananaDelay = 2 * 1000;
 let bananaDelay = maximumBananaDelay;
 
 let bananaImage = undefined;
+let flatBananaImage = undefined;
 
 let car = {
     x: 450,
@@ -46,6 +49,7 @@ function preload() {
     // Load the banana image
     bananaImage = loadImage("assets/images/banana-yellow.png");
     car.image = loadImage("assets/images/car.png")
+    flatBananaImage = loadImage("assets/images/flat-banana.png")
 }
 
 /**
@@ -97,6 +101,8 @@ function draw() {
     drawCar();
     //Move the car
     moveCar();
+    //Checks if the car hits a banana
+    checkBananaCarOverlap();
 }
 
 /**
@@ -119,6 +125,17 @@ function moveCar() {
     car.y = constrain(car.y, 150, 525);
 }
 
+function checkBananaCarOverlap() {
+    // Get distance from car to banana
+    const d = dist(bananas.x, bananas.y, car.x, car.y);
+    // Check if it's an overlap
+    const collision = (d < bananas.y + car.y);
+    if (collision) {
+        //Draws the flattened version of the banana
+        bananaImage = flatBananaImage;
+    }
+}
+
 function drawRoad() {
     push();
     noStroke();
@@ -138,7 +155,7 @@ function drawBanana(banana) {
     pop();
 }
 
-function drawCar(banana) {
+function drawCar() {
     push();
     image(car.image, car.x, car.y);
     pop();
