@@ -1,4 +1,4 @@
-# Template p5 Project
+# Banana Squasher
 
 Laura Slabbert
 
