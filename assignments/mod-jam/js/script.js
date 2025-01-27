@@ -33,7 +33,6 @@ let banana = {
     fearDistance: 200,
     image: undefined,
 
-    fill: "#ffe369", // Starts out  yellow
     fills: {
         young: "#b0d481", // green
         middleAged: "#ffe369", // yellow
@@ -80,7 +79,9 @@ function draw() {
     rails();
 
     //Draws the bananas
-    drawBanana();
+    drawBanana(banana.fills.young, greenX, greenY)//draws the green banana
+    drawBanana(banana.fills.middleAged, yellowX, yellowY)//draws the yellow banana
+    drawBanana(banana.fills.old, brownX, brownY)//draws the brown banana
 
     //Draws the train
     drawTrain();
@@ -185,7 +186,7 @@ function rightTracks() {
     }
 }
 
-//draws the vertical lines of the rail borders
+//draws the vertical lines of the rail borders //NOT WORKING
 function rails() {
     // Keep checking if x is still less than the width...
     while (railX1 && railX2 <= width) {
@@ -197,27 +198,13 @@ function rails() {
     }
 }
 
-function drawBanana() {
+function drawBanana(colour, x, y,) {
 
     //draws the green banana
     push();
     imageMode(CENTER);
-    tint(banana.fills.young);
-    image(banana.image, banana.greenX, banana.greenY);
-    pop();
-
-    //draws the yellow bananas
-    push();
-    imageMode(CENTER);
-    tint(banana.fills.middleAged);
-    image(banana.image, banana.yellowX, banana.yellowY);
-    pop();
-
-    //draws the brown bananas
-    push();
-    imageMode(CENTER);
-    tint(banana.fills.old);
-    image(banana.image, banana.brownX, banana.brownY);
+    tint(colour);
+    image(banana.image, x, y);
     pop();
 }
 

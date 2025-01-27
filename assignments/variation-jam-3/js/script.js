@@ -22,8 +22,8 @@ let train = {
     },
     //The keys that control the train and their directions
     keys: {
-        up: 83, // W
-        down: 87, // S
+        up: 87, // W
+        down: 83, // S
     }
 }
 
@@ -78,12 +78,12 @@ function draw() {
 
 function moveTrain() {
     //moves train up
-    if (keyIsDown(train.keys.up)) {
-        train.y += 5
+    if (keyIsDown(train.keys.up || car.keys.right)) {
+        train.y -= 5
     }
     //Moves train down
-    else if (keyIsDown(train.keys.down)) {
-        train.y -= 5;
+    else if (keyIsDown(train.keys.down || car.keys.left)) {
+        train.y += 5;
     }
     //Constrains the train to canvas
     train.y = constrain(train.y, 60, 600);
@@ -100,12 +100,12 @@ function drawTrain() {
 }
 
 function moveCar() {
-    //moves car up
-    if (keyIsDown(car.keys.right)) {
+    //moves car right
+    if (keyIsDown(car.keys.right || train.keys.up)) {
         car.x += 5;
     }
-    //Moves car down
-    else if (keyIsDown(car.keys.left)) {
+    //Moves car left
+    else if (keyIsDown(car.keys.left || train.keys.down)) {
         car.x -= 5;
     }
     //Constrains the car to the canvas
