@@ -46,6 +46,14 @@ let car = {
     }
 }
 
+let hitCar = {
+    image: undefined,
+}
+
+let hitTrain = {
+    image: undefined,
+}
+
 /**
  * //Creates the canavas
 */
@@ -60,6 +68,9 @@ function preload() {
     car.image = loadImage("assets/images/car.png");
     //Loads the train image
     train.image = loadImage("assets/images/train.png");
+
+    hitCar.image = loadImage("assets/images/hit_car.png")
+    hitTrain.image = loadImage("assets/images/hit_train.png");
 }
 
 
@@ -118,4 +129,18 @@ function drawCar() {
     //Displays the car image and positions the car at its x and y
     image(car.image, car.x, car.y);
     pop();
+}
+
+function checkBananaTrainCarOverlap() {
+    // Get distance from train to car
+    const d = dist(car.x, car.y, train.x, train.y);
+    // Check if it's an overlap
+    const collision = (d < car.x / 2 + train.x / 2);
+    if (collision) {
+        console.log("exploding cars...")
+        //Draws the flattened version of the banana
+        car.image = hitCar.image;
+        train.image = hitTrain.image;
+
+    }
 }

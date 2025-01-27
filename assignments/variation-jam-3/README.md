@@ -10,8 +10,6 @@ This final chapter of my variation jam forces a player to crash the train and ca
 
 ## Credits
 
-This bit should describe what tools were used. For example:
-
 This project uses [p5.js](https://p5js.org).
 
 ## Attribution
