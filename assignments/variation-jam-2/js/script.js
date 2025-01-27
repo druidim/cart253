@@ -7,8 +7,6 @@
 
 "use strict";
 
-
-
 // The bananas
 let bananas = [];
 
@@ -186,3 +184,4 @@ function mousePressed() {
         }
     }
 }
+//I'm assuming I need to adjust this ^ code to get the squish function to work, either instead of the overlap funciton or in addition to the overlap function? // LAURA
