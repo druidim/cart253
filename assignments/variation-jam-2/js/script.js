@@ -1,8 +1,8 @@
 /**
- * Banana Squasher (Debananaging Arrays)
- * Pippin Barr
+ * Banana Squasher
+ * Laura Slabbert
  * 
- * Squash bananas by clicking on them. Squish.
+ * Run over bananas with your car. Or don't.
  */
 
 "use strict";
@@ -17,18 +17,24 @@ const minimumBananaDelay = 0.5 * 1000;
 const maximumBananaDelay = 2 * 1000;
 let bananaDelay = maximumBananaDelay;
 
+//The visual for the bananas
 let bananaImage = undefined;
+//The visual for the squished bananas
 let flatBananaImage = undefined;
 
+//Attributes of the car
 let car = {
+    //The car's starting position
     x: 450,
     y: 205,
+    //The car's visual (will be called in the preload)
     image: undefined,
+    //The speed at which the car moves
     velocity: {
         x: 0,
         y: 5,
     },
-
+    //The keys that move the car up and down
     keys: {
         up: 83, // W
         down: 87, // S
@@ -37,19 +43,21 @@ let car = {
 
 
 /**
- * Create the canvas
+ * Creates the canvas and sets the banana's timer
 */
 function setup() {
     createCanvas(600, 600);
 
     setTimeout(addBanana, bananaDelay);
 }
-
+//Preloads the visuals
 function preload() {
     // Load the banana image
     bananaImage = loadImage("assets/images/banana-yellow.png");
-    car.image = loadImage("assets/images/car.png")
+    //Load the squished banana image
     flatBananaImage = loadImage("assets/images/flat-banana.png")
+    //Load the car image
+    car.image = loadImage("assets/images/car.png")
 }
 
 /**
@@ -68,8 +76,8 @@ function addBanana() {
 }
 
 /**
- * Creates and returns a randomized banana that will start at the top of the
- * canvas and move down
+ * Creates and returns a randomized banana that will start on the left of the
+ * canvas and move right
  */
 function createBanana() {
     const banana = {
@@ -85,11 +93,10 @@ function createBanana() {
 }
 
 /**
- * Move and display the bananas
+ * Calls the functions to draw and move the bananas and the car, as well as calling the squishing function (overlap)
 */
 function draw() {
     background("#ddeeff");
-
     //Draw the road
     drawRoad();
     // Move and draw the bananas
@@ -122,6 +129,7 @@ function moveCar() {
     else if (keyIsDown(car.keys.down)) {
         car.y -= 5;
     }
+    //Keeps the car from going offscreen
     car.y = constrain(car.y, 150, 525);
 }
 
@@ -131,21 +139,21 @@ function checkBananaCarOverlap() {
     // Check if it's an overlap
     const collision = (d < bananas.y + car.y);
     if (collision) {
-        //Draws the flattened version of the banana
+        //If the car and banana overlap, draws the flattened version of the banana
         bananaImage = flatBananaImage;
     }
 }
-
+//Draws the road
 function drawRoad() {
     push();
     noStroke();
-    fill(100, 100, 100);
+    fill(100, 100, 100);//grey
     rect(0, 190, 600, 410);
     pop();
 }
 
 /**
- * Draws a banana according to its properties
+ * Draws a banana
  */
 function drawBanana(banana) {
     push();
@@ -154,7 +162,7 @@ function drawBanana(banana) {
     image(bananaImage, banana.x, banana.y)
     pop();
 }
-
+//Draws the car
 function drawCar() {
     push();
     image(car.image, car.x, car.y);
@@ -162,7 +170,7 @@ function drawCar() {
 }
 
 /**
- * Removes bananas if you click (near) them
+ * Removes bananas if the car hits them
  */
 function mousePressed() {
     // We need to check EVERY banana to see if it was clicked
