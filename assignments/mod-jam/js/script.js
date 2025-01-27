@@ -79,9 +79,9 @@ function draw() {
     rails();
 
     //Draws the bananas
-    drawBanana(banana.fills.young, greenX, greenY)//draws the green banana
-    drawBanana(banana.fills.middleAged, yellowX, yellowY)//draws the yellow banana
-    drawBanana(banana.fills.old, brownX, brownY)//draws the brown banana
+    drawBanana(banana.fills.young, banana.greenX, banana.greenY)//draws the green banana
+    drawBanana(banana.fills.middleAged, banana.yellowX, banana.yellowY)//draws the yellow banana
+    drawBanana(banana.fills.old, banana.brownX, banana.brownY)//draws the brown banana
 
     //Draws the train
     drawTrain();
