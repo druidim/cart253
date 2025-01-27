@@ -1,5 +1,9 @@
 function setup() {
     createCanvas(700, 700);
+
+    greenBanana.image = bananaImage;
+    yellowBanana.image = bananaImage;
+    brownBanana.image = bananaImage;
 }
 
 let orders = undefined;
@@ -15,6 +19,30 @@ let railY2 = 710;
 
 //Distance between rail borders
 let railDistance = 200;
+
+let greenBanana = {
+    x: 150,
+    y: 500,
+    fill: "#b0d481",
+    image: undefined,
+    alive: true
+};
+
+let yellowBanana = {
+    x: 300,
+    y: 500,
+    fill: "#b0d481",
+    image: undefined,
+    alive: true
+};
+
+let brownBanana = {
+    x: 500,
+    y: 500,
+    fill: "#b0d481",
+    image: undefined,
+    alive: true
+};
 
 let banana = {
     // Position of the bananas
@@ -38,7 +66,10 @@ let banana = {
         middleAged: "#ffe369", // yellow
         old: "#735108", // brown
     }
-}
+};
+
+let bananaImage = undefined;
+let flatBananaImage = undefined;
 
 let flatBanana = {
     image: undefined,
@@ -55,9 +86,9 @@ let train = {
 //Preloads the banana images
 function preload() {
     // Load the banana image
-    banana.image = loadImage("assets/images/banana-yellow.png");
+    bananaImage = loadImage("assets/images/banana-yellow.png");
     //Load the flattened banana image
-    flatBanana.image = loadImage("assets/images/flat-banana.png");
+    flatBananaImage = loadImage("assets/images/flat-banana.png");
     //Load the train image
     train.image = loadImage("assets/images/train.png");
     //Load the orders
@@ -79,9 +110,9 @@ function draw() {
     rails();
 
     //Draws the bananas
-    drawBanana(banana.fills.young, banana.greenX, banana.greenY)//draws the green banana
-    drawBanana(banana.fills.middleAged, banana.yellowX, banana.yellowY)//draws the yellow banana
-    drawBanana(banana.fills.old, banana.brownX, banana.brownY)//draws the brown banana
+    drawBanana(greenBanana)//draws the green banana
+    drawBanana(yellowBanana)//draws the yellow banana
+    drawBanana(brownBanana)//draws the brown banana
 
     //Draws the train
     drawTrain();
@@ -90,7 +121,10 @@ function draw() {
     moveTrain();
 
     //Checks if a banana was hit by a train
-    checkBananaTrainOverlap();
+    checkBananaTrainOverlap(greenBanana);
+    checkBananaTrainOverlap(yellowBanana);
+    checkBananaTrainOverlap(brownBanana);
+
 
     //Draws the orders given to the user
     drawOrders();
@@ -120,14 +154,14 @@ function moveTrain() {
     }
 }
 
-function checkBananaTrainOverlap() {
+function checkBananaTrainOverlap(banana) {
     // Get distance from train to banana
-    const d = dist(banana.greenX, banana.greenY, train.x, train.y);
+    const d = dist(banana.x, banana.y, train.x, train.y);
     // Check if it's an overlap
-    const collision = (d < banana.greenX / 6.5 + train.x / 6.5);
+    const collision = (d < banana.x / 6.5 + train.x / 6.5);
     if (collision) {
         //Draws the flattened version of the banana
-        banana.image = flatBanana.image;
+        banana.image = flatBananaImage;
     }
 }
 
@@ -139,6 +173,12 @@ function leftTracks() {
     let leftPoint1y = 250;
     let leftPoint2x = 200
     let leftPoint2y = 250;
+
+    push();
+    strokeWeight(4);
+    line(leftPoint1x + 10, leftPoint1y - 10, leftPoint1x + 10, height);
+    line(leftPoint2x - 10, leftPoint2y - 10, leftPoint2x - 10, height);
+    pop();
 
     // Keep checking if y is still less than the height...
     while (leftPoint2y <= height) {
@@ -198,13 +238,13 @@ function rails() {
     }
 }
 
-function drawBanana(colour, x, y,) {
+function drawBanana(banana) {
 
     //draws the green banana
     push();
     imageMode(CENTER);
-    tint(colour);
-    image(banana.image, x, y);
+    tint(banana.fill);
+    image(banana.image, banana.x, banana.y);
     pop();
 }
 
