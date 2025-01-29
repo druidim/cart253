@@ -8,6 +8,9 @@
 
 "use strict";
 
+//Distance between tracks
+let trackDistance = 40;
+
 //The train
 let train = {
     //Starting position
@@ -80,13 +83,55 @@ function preload() {
 function draw() {
     background("#ddeeff");
 
+    drawGrass();
+
+    drawRoad();
+
+    drawTracks();
+
     drawTrain();
 
     drawCar();
     moveCar();
 }
 
+function drawGrass() {
+    push();
+    fill(193, 225, 193);//green
+    rect(0, 0, 600, 600);
+    pop();
+}
 
+function drawRoad() {
+    push();
+    fill("grey");
+    rect(0, 275, 600, 100);
+    pop();
+}
+
+function drawTracks() {
+
+    // Set up the position the first line
+    let point1x = 250;
+    let point1y = 0;
+    let point2x = 350;
+    let point2y = 0;
+
+    push();
+    strokeWeight(4);
+    line(point1x + 10, point1y - 10, point1x + 10, height);
+    line(point2x - 10, point2y - 10, point2x - 10, height);
+    pop();
+
+    // Keep checking if y is still less than the height...
+    while (point2y <= height) {
+        // If it is, draw the next rail
+        line(point1x, point1y, point2x, point2y);
+        // And increase y to move down
+        point1y += trackDistance;
+        point2y += trackDistance;
+    }
+}
 
 //Draws the train
 function drawTrain() {
