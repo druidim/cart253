@@ -29,46 +29,24 @@ let greenBanana = {
 };
 
 let yellowBanana = {
-    x: 300,
+    x: 350,
     y: 500,
-    fill: "#b0d481",
+    fill: "#ffe369",
     image: undefined,
     alive: true
 };
 
 let brownBanana = {
-    x: 500,
+    x: 550,
     y: 500,
-    fill: "#b0d481",
+    fill: "#735108",
     image: undefined,
     alive: true
 };
 
-let banana = {
-    // Position of the bananas
-    greenX: 150,
-    greenY: 500,
 
-    yellowX: 350,
-    yellowY: 500,
 
-    brownX: 550,
-    brownY: 500,
 
-    alive: true,
-    fearLevel: 0,
-    fearThreshold: 500,
-    fearDistance: 200,
-    image: undefined,
-
-    fills: {
-        young: "#b0d481", // green
-        middleAged: "#ffe369", // yellow
-        old: "#735108", // brown
-    }
-};
-
-let bananaImage = undefined;
 let flatBananaImage = undefined;
 
 let flatBanana = {
