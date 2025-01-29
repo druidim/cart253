@@ -81,24 +81,12 @@ function draw() {
     background("#ddeeff");
 
     drawTrain();
-    moveTrain();
 
     drawCar();
     moveCar();
 }
 
-function moveTrain() {
-    //moves train up
-    if (keyIsDown(train.keys.up || car.keys.right)) {
-        train.y -= 5
-    }
-    //Moves train down
-    else if (keyIsDown(train.keys.down || car.keys.left)) {
-        train.y += 5;
-    }
-    //Constrains the train to canvas
-    train.y = constrain(train.y, 60, 600);
-}
+
 
 //Draws the train
 function drawTrain() {
@@ -112,15 +100,19 @@ function drawTrain() {
 
 function moveCar() {
     //moves car right
-    if (keyIsDown(car.keys.right || train.keys.up)) {
+    if (keyIsDown(car.keys.right) || keyIsDown(train.keys.up)) {
         car.x += 5;
+        train.y -= 5
     }
     //Moves car left
-    else if (keyIsDown(car.keys.left || train.keys.down)) {
+    else if (keyIsDown(car.keys.left) || keyIsDown(train.keys.down)) {
         car.x -= 5;
+        train.y += 5
     }
     //Constrains the car to the canvas
-    car.x = constrain(car.x, 0, 490);
+    car.x = constrain(car.x, 245, 490);
+    //Constrains the train to canvas
+    train.y = constrain(train.y, 60, 310);
 }
 
 //Draws the car
