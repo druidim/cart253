@@ -81,9 +81,6 @@ function draw() {
     //Draws the right side train track
     rightTracks();
 
-    //Draws the borders of the rails
-    rails();
-
     //Draws the bananas
     drawBanana(greenBanana)//draws the green banana
     drawBanana(yellowBanana)//draws the yellow banana
@@ -204,7 +201,6 @@ function rightTracks() {
     line(rightPoint2x - 10, rightPoint2y - 10, rightPoint2x - 10, height);
     pop();
 
-
     // Keep checking if y is still less than the height...
     while (rightPoint2y <= height) {
         // If it is, draw the next rail
@@ -215,17 +211,6 @@ function rightTracks() {
     }
 }
 
-//draws the vertical lines of the rail borders //NOT WORKING
-function rails() {
-    // Keep checking if x is still less than the width...
-    while (railX1 && railX2 <= width) {
-        // If it is, draw the next rail border
-        line(railX1, railY2, railX2, railY2);
-        // And increase x to move across
-        railX1 += railDistance;
-        railX2 += railDistance;
-    }
-}
 
 function drawBanana(banana) {
 
