@@ -44,9 +44,6 @@ let brownBanana = {
     alive: true
 };
 
-
-
-
 let flatBananaImage = undefined;
 
 let flatBanana = {
@@ -103,7 +100,6 @@ function draw() {
     checkBananaTrainOverlap(yellowBanana);
     checkBananaTrainOverlap(brownBanana);
 
-
     //Draws the orders given to the user
     drawOrders();
 
@@ -136,7 +132,7 @@ function checkBananaTrainOverlap(banana) {
     // Get distance from train to banana
     const d = dist(banana.x, banana.y, train.x, train.y);
     // Check if it's an overlap
-    const collision = (d < banana.x / 6.5 + train.x / 6.5);
+    const collision = (d < banana.x / 6.5 + train.x / 5);
     if (collision) {
         //Draws the flattened version of the banana
         banana.image = flatBananaImage;
@@ -176,6 +172,13 @@ function middleTracks() {
     let middlePoint1y = 250;
     let middlePoint2x = 400;
     let middlePoint2y = 250;
+
+    push();
+    strokeWeight(4);
+    line(middlePoint1x + 10, middlePoint1y - 10, middlePoint1x + 10, height);
+    line(middlePoint2x - 10, middlePoint2y - 10, middlePoint2x - 10, height);
+    pop();
+
     // Keep checking if y is still less than the height...
     while (middlePoint2y <= height) {
         // If it is, draw the next rail
@@ -194,6 +197,14 @@ function rightTracks() {
     let rightPoint1y = 250;
     let rightPoint2x = 600;
     let rightPoint2y = 250;
+
+    push();
+    strokeWeight(4);
+    line(rightPoint1x + 10, rightPoint1y - 10, rightPoint1x + 10, height);
+    line(rightPoint2x - 10, rightPoint2y - 10, rightPoint2x - 10, height);
+    pop();
+
+
     // Keep checking if y is still less than the height...
     while (rightPoint2y <= height) {
         // If it is, draw the next rail
