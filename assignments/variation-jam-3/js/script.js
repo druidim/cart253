@@ -11,6 +11,9 @@
 //Distance between tracks
 let trackDistance = 40;
 
+//
+let finaleText = undefined;
+
 //The train
 let train = {
     //Starting position
@@ -74,6 +77,8 @@ function preload() {
 
     hitCar.image = loadImage("assets/images/hit_car.png")
     hitTrain.image = loadImage("assets/images/hit_train.png");
+
+    finaleText = loadJSON("assets/data/finale_text.json");
 }
 
 
@@ -93,6 +98,8 @@ function draw() {
 
     drawCar();
     moveCar();
+
+    drawFinaleText();
 }
 
 function drawGrass() {
@@ -180,4 +187,14 @@ function checkBananaTrainCarOverlap() {
         train.image = hitTrain.image;
 
     }
+}
+
+function drawFinaleText() {
+    const description = finaleText.description;
+    push();
+    textSize(20);
+    fill("black");
+    textAlign(CENTER, CENTER);
+    text(description, 470, 100);
+    pop();
 }
