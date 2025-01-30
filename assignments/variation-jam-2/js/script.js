@@ -23,7 +23,7 @@ let flatBananaImage = undefined;
 //Attributes of the car
 let car = {
     //The car's starting position
-    x: 450,
+    x: 500,
     y: 205,
     //The car's visual (will be called in the preload)
     image: undefined,
@@ -41,11 +41,11 @@ let car = {
 
 
 /**
- * Creates the canvas and sets the banana's timer
+ * Creates the canvas, sets the image mode, and sets the banana's timer
 */
 function setup() {
     createCanvas(600, 600);
-
+    imageMode(CENTER);
     setTimeout(addBanana, bananaDelay);
 }
 //Preloads the visuals
@@ -128,14 +128,14 @@ function moveCar() {
         car.y -= 5;
     }
     //Keeps the car from going offscreen
-    car.y = constrain(car.y, 150, 525);
+    car.y = constrain(car.y, 200, 550);
 }
 
 function checkBananaCarOverlap() {
     // Get distance from car to banana
     const d = dist(bananas.x, bananas.y, car.x, car.y);
     // Check if it's an overlap
-    const collision = (d < bananas.y + car.y);
+    const collision = (d < bananas.y / 2 + car.y / 2);
     if (collision) {
         //If the car and banana overlap, draws the flattened version of the banana
         bananaImage = flatBananaImage;
@@ -166,22 +166,3 @@ function drawCar() {
     image(car.image, car.x, car.y);
     pop();
 }
-
-/**
- * Removes bananas if the car hits them
- */
-function mousePressed() {
-    // We need to check EVERY banana to see if it was clicked
-    for (let banana of bananas) {
-        // Get the distance between the mouse and the banana
-        const d = dist(mouseX, mouseY, banana.x, banana.y);
-        // Check if it's close enough
-        if (d < 25) {
-            // If so get the index of this banana in the bananas array
-            const index = bananas.indexOf(banana);
-            // And remove it
-            bananas.splice(index, 1);
-        }
-    }
-}
-//I'm assuming I need to adjust this ^ code to get the squish function to work, either instead of the overlap funciton or in addition to the overlap function? // LAURA
