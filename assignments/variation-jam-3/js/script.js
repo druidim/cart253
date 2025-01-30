@@ -8,6 +8,7 @@
 
 "use strict";
 
+
 //Distance between tracks
 let trackDistance = 40;
 
@@ -37,7 +38,7 @@ let train = {
 let car = {
     //Starting position
     x: 490,
-    y: 300,
+    y: 320,
     //Car visual (will be preloaded)
     image: undefined,
     //The rate at which the car moves
@@ -61,11 +62,11 @@ let hitTrain = {
 }
 
 /**
- * //Creates the canavas
+ * //Creates the canavas and sets the image mode
 */
 function setup() {
     createCanvas(600, 600);
-
+    imageMode(CENTER);
 }
 
 //Preloads the assets
@@ -80,6 +81,7 @@ function preload() {
 
     finaleText = loadJSON("assets/data/finale_text.json");
 }
+
 
 
 /**
@@ -98,6 +100,8 @@ function draw() {
 
     drawCar();
     moveCar();
+
+    checkTrainCarOverlap();
 
     drawFinaleText();
 }
@@ -162,9 +166,9 @@ function moveCar() {
         train.y += 5
     }
     //Constrains the car to the canvas
-    car.x = constrain(car.x, 245, 490);
+    car.x = constrain(car.x, 300, 530);
     //Constrains the train to canvas
-    train.y = constrain(train.y, 60, 310);
+    train.y = constrain(train.y, 60, 275);
 }
 
 //Draws the car
@@ -175,17 +179,15 @@ function drawCar() {
     pop();
 }
 
-function checkBananaTrainCarOverlap() {
+function checkTrainCarOverlap() {
     // Get distance from train to car
     const d = dist(car.x, car.y, train.x, train.y);
     // Check if it's an overlap
-    const collision = (d < car.x / 2 + train.x / 2);
+    const collision = (d < car.x / 10 + train.x / 10);
     if (collision) {
-        console.log("exploding cars...")
         //Draws the flattened version of the banana
         car.image = hitCar.image;
         train.image = hitTrain.image;
-
     }
 }
 
