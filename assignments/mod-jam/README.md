@@ -2,15 +2,13 @@
 
 Laura Slabbert
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+[View this project online] https://druidim.github.io/cart253/assignments/variation-jam-1/
 
 ## Description
 
-This description should help the reader understand what the program is, what any controls do, and perhaps what the desired experience it.
+Decide which banana deserves to be run over by a train by pressing either 1, 2, or 3.
 
 ## Credits
-
-This bit should describe what tools were used. For example:
 
 This project uses [p5.js](https://p5js.org).
 

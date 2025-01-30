@@ -1,9 +1,21 @@
+/**
+ * Banana Trolley Problem
+ * 
+ * Laura Slabbert
+ * 
+ * Decide which banana should live or die by choosing a track for the train to follow by pressing 1, 2, or 3.
+ * 
+ */
+
+//Draws the canvas, sets up the banana parameters, and sets the image mode to "center".
 function setup() {
     createCanvas(700, 700);
 
     greenBanana.image = bananaImage;
     yellowBanana.image = bananaImage;
     brownBanana.image = bananaImage;
+
+    imageMode(CENTER);
 }
 
 let orders = undefined;
