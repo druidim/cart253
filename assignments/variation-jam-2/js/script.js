@@ -75,7 +75,7 @@ function addBanana() {
 
 /**
  * Creates and returns a randomized banana that will start on the left of the
- * canvas and move right
+ * canvas and move to the right
  */
 function createBanana() {
     const banana = {
@@ -133,12 +133,12 @@ function moveCar() {
 
 function checkBananaCarOverlap(banana) {
     // Check if the hitboxes (rectangles) overlap
-    if (banana.x + banana.image.width / 2 > car.x - car.image.width / 2 &&
-        banana.x - banana.image.width / 2 < car.x + car.image.width / 2 &&
-        banana.y + banana.image.height / 2 > car.y - car.image.height / 2 &&
-        banana.y - banana.image.height / 2 < car.y + car.image.height / 2) {
+    if (banana.x + bananaImage.width / 2 > car.x - car.image.width / 2 &&
+        banana.x - bananaImage.width / 2 < car.x + car.image.width / 2 &&
+        banana.y + bananaImage.height / 2 > car.y - car.image.height / 2 &&
+        banana.y - bananaImage.height / 2 < car.y + car.image.height / 2) {
         // The rects overlap, so here we are
-        banana.image = flatBananaImage;
+        bananaImage = flatBananaImage;
     }
 }
 //Draws the road
