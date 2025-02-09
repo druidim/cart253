@@ -135,7 +135,7 @@ function moveTrain() {
 function checkBananaTrainOverlap(banana) {
     // Check if the hitboxes (rectangles) overlap
     if (banana.x + banana.image.width / 2 > train.x - train.image.width / 2 &&
-        banana.x - banana.image / width / 2 < train.x + train.image.width / 2 &&
+        banana.x - banana.image.width / 2 < train.x + train.image.width / 2 &&
         banana.y + banana.image.height / 2 > train.y - train.image.height / 2 &&
         banana.y - banana.image.height / 2 < train.y + train.image.height / 2) {
         // The rects overlap, so here we are
