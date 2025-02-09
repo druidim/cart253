@@ -188,6 +188,8 @@ function checkTrainCarOverlap() {
         //Draws the flattened version of the banana
         car.image = hitCar.image;
         train.image = hitTrain.image;
+        car.velocity = 0;
+        train.velocity = 0;
     }
 }
 

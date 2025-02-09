@@ -58,11 +58,6 @@ let brownBanana = {
 
 let flatBananaImage = undefined;
 
-let flatBanana = {
-    image: undefined,
-
-}
-
 let train = {
     x: 75,
     y: 100,
@@ -138,15 +133,16 @@ function moveTrain() {
 }
 
 function checkBananaTrainOverlap(banana) {
-    // Get distance from train to banana
-    const d = dist(banana.x, banana.y, train.x, train.y);
-    // Check if it's an overlap
-    const collision = (d < banana.x / 6.5 + train.x / 5);
-    if (collision) {
-        //Draws the flattened version of the banana
+    // Check if the hitboxes (rectangles) overlap
+    if (banana.x + banana.image.width / 2 > train.x - train.image.width / 2 &&
+        banana.x - banana.image / width / 2 < train.x + train.image.width / 2 &&
+        banana.y + banana.image.height / 2 > train.y - train.image.height / 2 &&
+        banana.y - banana.image.height / 2 < train.y + train.image.height / 2) {
+        // The rects overlap, so here we are
         banana.image = flatBananaImage;
     }
 }
+
 
 //Draws the left set of tracks.
 function leftTracks() {
