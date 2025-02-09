@@ -31,7 +31,9 @@ let train = {
     keys: {
         up: 87, // W
         down: 83, // S
-    }
+    },
+    //Determines if the train has been hit or not
+    alive: true,
 }
 
 //The car
@@ -50,7 +52,9 @@ let car = {
     keys: {
         left: 65, // A
         right: 68, // D
-    }
+    },
+    //Determines if the car has been hit or not
+    alive: true,
 }
 
 let hitCar = {
@@ -155,8 +159,11 @@ function drawTrain() {
 }
 
 function moveCar() {
+    if (!car.alive) {
+        return;
+    }
     //moves car right
-    if (keyIsDown(car.keys.right) || keyIsDown(train.keys.up)) {
+    else if (keyIsDown(car.keys.right) || keyIsDown(train.keys.up)) {
         car.x += 5;
         train.y -= 5
     }
@@ -188,8 +195,8 @@ function checkTrainCarOverlap() {
         //Draws the flattened version of the banana
         car.image = hitCar.image;
         train.image = hitTrain.image;
-        car.velocity = 0;
-        train.velocity = 0;
+        car.alive = false;
+        train.alive = false;
     }
 }
 

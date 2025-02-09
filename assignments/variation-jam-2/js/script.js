@@ -131,14 +131,14 @@ function moveCar() {
     car.y = constrain(car.y, 200, 550);
 }
 
-function checkBananaCarOverlap() {
-    // Get distance from car to banana
-    const d = dist(bananas.x, bananas.y, car.x, car.y);
-    // Check if it's an overlap
-    const collision = (d < bananas.y / 2 + car.y / 2);
-    if (collision) {
-        //If the car and banana overlap, draws the flattened version of the banana
-        bananaImage = flatBananaImage;
+function checkBananaCarOverlap(banana) {
+    // Check if the hitboxes (rectangles) overlap
+    if (banana.x + banana.image.width / 2 > car.x - car.image.width / 2 &&
+        banana.x - banana.image.width / 2 < car.x + car.image.width / 2 &&
+        banana.y + banana.image.height / 2 > car.y - car.image.height / 2 &&
+        banana.y - banana.image.height / 2 < car.y + car.image.height / 2) {
+        // The rects overlap, so here we are
+        banana.image = flatBananaImage;
     }
 }
 //Draws the road
