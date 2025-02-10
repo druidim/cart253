@@ -1,7 +1,7 @@
 /**
  * Banana Squasher
  * Laura Slabbert
- * 
+ *
  * Run over bananas with your car. Or don't.
  */
 
@@ -86,6 +86,7 @@ function createBanana() {
             y: 0
         },
         fill: "orange",
+        image: bananaImage
     };
     return banana;
 }
@@ -101,13 +102,13 @@ function draw() {
     for (let banana of bananas) {
         moveBanana(banana);
         drawBanana(banana);
+        checkBananaCarOverlap(banana, car);
     }
     //Draw the car
     drawCar();
     //Move the car
     moveCar();
     //Checks if the car hits a banana
-    checkBananaCarOverlap();
 }
 
 /**
@@ -131,14 +132,14 @@ function moveCar() {
     car.y = constrain(car.y, 200, 550);
 }
 
-function checkBananaCarOverlap(banana) {
+function checkBananaCarOverlap(banana, car) {
     // Check if the hitboxes (rectangles) overlap
     if (banana.x + bananaImage.width / 2 > car.x - car.image.width / 2 &&
         banana.x - bananaImage.width / 2 < car.x + car.image.width / 2 &&
         banana.y + bananaImage.height / 2 > car.y - car.image.height / 2 &&
         banana.y - bananaImage.height / 2 < car.y + car.image.height / 2) {
         // The rects overlap, so here we are
-        bananaImage = flatBananaImage;
+        banana.image = flatBananaImage;
     }
 }
 //Draws the road
@@ -157,7 +158,7 @@ function drawBanana(banana) {
     push();
     noStroke();
     fill(banana.fill);
-    image(bananaImage, banana.x, banana.y)
+    image(banana.image, banana.x, banana.y)
     pop();
 }
 //Draws the car
