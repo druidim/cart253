@@ -13,4 +13,5 @@ This final chapter of my variation jam forces a player to crash the train and ca
 This project uses [p5.js](https://p5js.org).
 
 ## Attribution
-
+-JSON data code from Tarot by Pippin Barr
+-Collision code from Overlapping Rectangles by Pippin Barr

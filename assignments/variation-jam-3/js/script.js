@@ -2,7 +2,7 @@
  * The Finale
  * Laura Slabbert
  * 
- * This final chapter of my variation jam forces a player to crash the train and car they controlled in other parts of the game into one another using the arrow keys.
+ * This final chapter of my variation jam forces a player to crash the train and car they controlled in variations 1 and 2 into one another using the WASD keys.
  * 
  */
 
@@ -12,7 +12,7 @@
 //Distance between tracks
 let trackDistance = 40;
 
-//
+//The text that appears in the top right
 let finaleText = undefined;
 
 //The train
@@ -41,7 +41,7 @@ let car = {
     //Starting position
     x: 490,
     y: 320,
-    //Car visual (will be preloaded)
+    //Car visual
     image: undefined,
     //The rate at which the car moves
     velocity: {
@@ -56,11 +56,11 @@ let car = {
     //Determines if the car has been hit or not
     alive: true,
 }
-
+//Image displayed when the car is hit
 let hitCar = {
     image: undefined,
 }
-
+//Image displayed when the train is hit
 let hitTrain = {
     image: undefined,
 }
@@ -79,10 +79,11 @@ function preload() {
     car.image = loadImage("assets/images/car.png");
     //Loads the train image
     train.image = loadImage("assets/images/train.png");
-
+    //Loads the hit car image
     hitCar.image = loadImage("assets/images/hit_car.png")
+    //Loads the hit train image
     hitTrain.image = loadImage("assets/images/hit_train.png");
-
+    //Loads the text to be displayed
     finaleText = loadJSON("assets/data/finale_text.json");
 }
 
@@ -93,45 +94,47 @@ function preload() {
 */
 function draw() {
     background("#ddeeff");
-
+    //Draws the surrounding grass
     drawGrass();
-
+    //Draws the road
     drawRoad();
-
+    //Draws the train tracks
     drawTracks();
-
+    //Draws the train
     drawTrain();
-
+    //Draws the car
     drawCar();
+    //Moves the car and the train
     moveCar();
-
+    //Checks if the train and car have overlapped
     checkTrainCarOverlap();
-
+    //Draws the text
     drawFinaleText();
 }
-
+//Draws the grass
 function drawGrass() {
     push();
     fill(193, 225, 193);//green
     rect(0, 0, 600, 600);
     pop();
 }
-
+//Draws the road
 function drawRoad() {
     push();
     fill("grey");
     rect(0, 275, 600, 100);
     pop();
 }
-
+//Draws the train tracks
 function drawTracks() {
 
-    // Set up the position the first line
+    // Set up the position the first horizontal line of the tracks
     let point1x = 250;
     let point1y = 0;
     let point2x = 350;
     let point2y = 0;
 
+    //Draws the vertical lines of the tracks
     push();
     strokeWeight(4);
     line(point1x + 10, point1y - 10, point1x + 10, height);
@@ -151,23 +154,21 @@ function drawTracks() {
 //Draws the train
 function drawTrain() {
     push();
-    //Changes the location from which the image is drawn to its center
-    imageMode(CENTER);
     //Displays the train's image at its x and y
     image(train.image, train.x, train.y);
     pop();
 }
-
+//Moves the car and the train
 function moveCar() {
     if (!car.alive) {
         return;
     }
-    //moves car right
+    //Moves car right and train up
     else if (keyIsDown(car.keys.right) || keyIsDown(train.keys.up)) {
         car.x += 5;
         train.y -= 5
     }
-    //Moves car left
+    //Moves car left and train down
     else if (keyIsDown(car.keys.left) || keyIsDown(train.keys.down)) {
         car.x -= 5;
         train.y += 5
@@ -192,14 +193,15 @@ function checkTrainCarOverlap() {
     // Check if it's an overlap
     const collision = (d < car.x / 10 + train.x / 10);
     if (collision) {
-        //Draws the flattened version of the banana
+        //Draws the hit versions of the train and car
         car.image = hitCar.image;
         train.image = hitTrain.image;
+        //Sets the "alive" condition of the train and car to "false" so that they can no longer move
         car.alive = false;
         train.alive = false;
     }
 }
-
+//Draws the text at the top right of the screen
 function drawFinaleText() {
     const description = finaleText.description;
     push();
