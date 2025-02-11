@@ -14,5 +14,6 @@ This project uses [p5.js](https://p5js.org).
 
 ## Attribution
 
--Banana array function sourced from "Bug Squasher" by Pippin Barr.
+-Banana array code sourced from "Bug Squasher" by Pippin Barr.
+-Collision code from "Overlapping Rectangles" by Pippin Barr.
 

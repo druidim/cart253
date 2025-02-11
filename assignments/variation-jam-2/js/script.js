@@ -39,7 +39,6 @@ let car = {
     }
 }
 
-
 /**
  * Creates the canvas, sets the image mode, and sets the banana's timer
 */
@@ -85,7 +84,7 @@ function createBanana() {
             x: 3,
             y: 0
         },
-        fill: "orange",
+        fill: "yellow",
         image: bananaImage
     };
     return banana;
