@@ -17,7 +17,7 @@ function setup() {
 
     imageMode(CENTER);
 }
-
+//Text to display 
 let orders = undefined;
 
 //Distance between tracks
@@ -32,32 +32,35 @@ let railY2 = 710;
 //Distance between rail borders
 let railDistance = 200;
 
+//Data of the green banana
 let greenBanana = {
     x: 150,
     y: 500,
-    fill: "#b0d481",
+    fill: "#b0d481",//green
     image: undefined,
     alive: true
 };
-
+//Data of the yellow banana
 let yellowBanana = {
     x: 350,
     y: 500,
-    fill: "#ffe369",
+    fill: "#ffe369",//yellow
     image: undefined,
     alive: true
 };
-
+//Data of the brown banana
 let brownBanana = {
     x: 550,
     y: 500,
-    fill: "#735108",
+    fill: "#735108",//brown
     image: undefined,
     alive: true
 };
 
+//Image of the flattened banana
 let flatBananaImage = undefined;
 
+//The train
 let train = {
     x: 75,
     y: 100,
@@ -77,6 +80,7 @@ function preload() {
     orders = loadJSON("assets/data/train_orders.json");
 }
 
+//Calls the functions of the program
 function draw() {
 
     //Draws the left side train track
@@ -111,20 +115,23 @@ function draw() {
     trackNumbers();
 
 }
-
+//Keys that control the train
 function keyPressed() {
+    //Makes the train go down track #1
     if (key === '1') {
         train.x = 150;
         train.y = 250;
+        //Makes the train go down track #2    
     } else if (key === '2') {
         train.x = 350;
         train.y = 250
+        //Makes the train go down track #3
     } else if (key === '3') {
         train.x = 550;
         train.y = 250;
     }
 }
-
+//Moves the train once it's on a track
 function moveTrain() {
     if (train.x >= 150) {
         train.y += train.speed;
@@ -132,6 +139,7 @@ function moveTrain() {
     }
 }
 
+//Checks if the train hits a banana
 function checkBananaTrainOverlap(banana) {
     // Check if the hitboxes (rectangles) overlap
     if (banana.x + banana.image.width / 2 > train.x - train.image.width / 2 &&
@@ -219,7 +227,7 @@ function rightTracks() {
     }
 }
 
-
+//Draws the bananas
 function drawBanana(banana) {
 
     //draws the green banana
@@ -230,6 +238,7 @@ function drawBanana(banana) {
     pop();
 }
 
+//Draws the train
 function drawTrain() {
     push();
     imageMode(CENTER);
@@ -237,6 +246,7 @@ function drawTrain() {
     pop();
 }
 
+//Draws the text 
 function drawOrders() {
     const description = orders.description;
 
@@ -249,6 +259,7 @@ function drawOrders() {
 
 }
 
+//Draws the train track numbers
 function trackNumbers() {
     push();
     textSize(50);
